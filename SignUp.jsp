@@ -62,18 +62,18 @@ input[type="email"] {
 						<b><font size="6" face="微軟正黑體">SIGN UP</font></b>
 				</center>
 				<tr>
-					<td width: 400 align="right">				
+					<td width="40%" align="right">				
 						<b><font size="2" face="微軟正黑體">Account name:</font></b>
 						<input type="text" name="username" BGCOLOR="#F5F5F5"
 							HTML_CTL="Text" maxLength="10" size="15"
 							placeholder="填入6-10位英文字母或數字" style="width: 175px;">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
-					<td width: 160>
+					<td width="20%">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
-					<td width: 400 align="left">
+					<td width="40%" align="left">
 								
 						<b><font size="2" face="微軟正黑體">Gender:</font></b>
 						<input type="radio" id="male" name="gender" value="male" checked>
@@ -83,35 +83,35 @@ input[type="email"] {
 					</td>		
 				</tr>
 				<tr>
-					<td width: 400 align="right">				
+					<td width="40%" align="right">				
 						<b><font size="2" face="微軟正黑體">Password:</font></b>
 						<input type="password" name="password" BGCOLOR="#F5F5F5"
 							HTML_CTL="Text" maxLength="10" size="15" placeholder="填入6-20位英文字母或數字"
 							style="width: 175px;">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>			
-					<td width: 160>
+					<td width="20%">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
 						
-					<td width: 400 align="left">			
+					<td width="40%" align="left">			
 						<b><font size="2" face="微軟正黑體">Birthday:</font></b>
 						<input type="date" name="birthday">
 					</td>		
 				</tr>
 				<tr>
-					<td width: 400 align="right">				
+					<td width="40%" align="right">				
 						<b><font size="2" face="微軟正黑體">E-mail:</font></b>
 								<input type="email" name="email"placeholder="XXX@gmail.com、XXX@yahoo.com.tw">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>				
-					<td width: 160>
+					<td width="20%">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
 								
-					<td width: 400 align="left">			
+					<td width="40%" align="left">			
 								<b><font size="2" face="微軟正黑體">Department:</font></b>
 								<select name="department">
 　								<option value="CSIE">資訊工程系</option>
@@ -122,21 +122,21 @@ input[type="email"] {
 					</td>		
 				</tr>
 				<tr>
-					<td width: 400 align="right">				
+					<td width="40%" align="right">				
 						<b><font size="2" face="微軟正黑體">Real name:</font></b>
 							<input type="text" name="RealName" BGCOLOR="#F5F5F5"
 								HTML_CTL="Text" maxLength="10" size="15"
 								placeholder="請填入你的真實姓名" style="width: 175px;">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>				
-					<td width: 160>
+					<td width="20%">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					</td>
 						
-					<td width: 400 align="left">
+					<td width="40%" align="left">
 						<b><font size="2" face="微軟正黑體">Grade:</font></b>
-						<select name="YourLocation">
+						<select name="Grade">
 　						<option value="1">freshman</option>
 						<option value="2">sophomore</option>
 						<option value="3">junior</option>
@@ -152,7 +152,10 @@ input[type="email"] {
 				</tr>			
 				<tr>
 					<td  align="center" colspan=3>				
-								<input type=submit value="Sign up">
+						<input type=submit value="Sign up">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<b><font size="2" face="微軟正黑體">有帳號了?<a href="login.jsp">直接登入</a></font></b>
 					</td>		
 				</tr>
 						

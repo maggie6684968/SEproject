@@ -46,37 +46,37 @@ input[type="text"] {
 				style="height: 540px; width: 960px">
 				<b><font size="6" face="微軟正黑體">Profile</font></b>
 				<tr>
-					<td width: 100 align="left">				
+					<td width="20%" align="left">				
 						<b><font size="2" face="微軟正黑體">Your name:	</font></b>
 						<%out.println(temp.get(id).name);%>
 					</td>
-					<td width: 220 align="left" rowspan=4>
+					<td width="40%" align="left" rowspan=4>
 						<b><font size="2" face="微軟正黑體">Your interest or hobby:	</font></b>
 						<br>
 						<textarea name="Content" style="width:250px;height:300px;" width="50%" height="50%">hobby</textarea>	
 					</td>
-					<td width: 220 align="left" rowspan=2>
+					<td width="40%" align="left" rowspan=2>
 						<img src="http://localhost:8080/DBTest/src/haibao.jpg"/>		
 					</td>		
 				</tr>
 				<tr>
-					<td width: 100 align="left">				
+					<td width="20%" align="left">				
 							<b><font size="2" face="微軟正黑體">Gender:	</font></b>
 							MALE
 					</td>		
 				</tr>
 				<tr>
-					<td width: 220 align="left">				
+					<td width="20%" align="left">				
 						<b><font size="2" face="微軟正黑體">Birthday:	</font></b>
 						<%out.println(temp.get(id).birthday);%>
 					</td>		
-					<td width: 220 align="left">
+					<td width="40%" align="left">
 						<b><font size="2" face="微軟正黑體">update your new profile photo:	</font></b>
 						<input type="file" name="photo">	
 					</td>
 				</tr>
 				<tr>
-					<td width: 100 align="left">				
+					<td width="20%" align="left">				
 						<b><font size="2" face="微軟正黑體">Department:		</font></b>
 							<select name="department">
 　							<option value="CSIE" selected>資訊工程系</option>
@@ -87,7 +87,7 @@ input[type="text"] {
 					</td>		
 				</tr>
 				<tr>
-					<td width: 220 align="left">				
+					<td width="20%" align="left">				
 						<b><font size="2" face="微軟正黑體">Grade:	</font></b>
 						<select name="Grade">
 　							<option value="1">freshman</option>
@@ -96,8 +96,10 @@ input[type="text"] {
 							<option value="4">senior</option>
 							</select>
 					</td>		
-					<td width: 400 align="center" colspan=2>
-					<input type=submit value="UpdateProfile">
+					<td width="40%" align="center" colspan=2>
+						<input type=submit value="Cancel">
+						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type=submit value="UpdateProfile">
 					</td>
 					
 				</tr>
