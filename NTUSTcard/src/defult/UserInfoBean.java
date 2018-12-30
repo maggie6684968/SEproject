@@ -71,7 +71,7 @@ public class UserInfoBean {
 	}
 
 	public String getBirthday() {
-		return this.mail;
+		return this.birthday;
 	}
 	
 }
