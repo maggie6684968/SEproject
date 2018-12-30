@@ -30,19 +30,19 @@ input[type="submit"] {
 						<td>
 							<form method="post" action="main">
 								<span style="float: left;"> <input type="button"
-									value="©â¥d" name="GetCardButton"> <input type="button"
-									value="­Ó¤H¸ê®Æ" name="Profile"> <input type="button"
-									value="Áô¨p³]©w" name="Secrecy">
+									value="æŠ½å¡" name="GetCardButton"> <input type="button"
+									value="å€‹äººè³‡æ–™" name="Profile"> <input type="button"
+									value="éš±ç§è¨­å®š" name="Secrecy">
 								</span>
 							</form>
 						</td>
 						<td>
 							<form method="post" action="main">
 								<span style="float: right;"> <input type="button"
-									value="­º­¶" name="HomePage"> <input type="button"
-									value="¥¬§iÄæ" name="Board"> <input type="button"
-									value="®a±Ú­¶" name="Family"><input type="hidden" name="action" value="logout"> <input
-			type="submit" value="µn¥X" name="logoutButton">
+									value="é¦–é " name="HomePage"> <input type="button"
+									value="å¸ƒå‘Šæ¬„" name="Board"> <input type="button"
+									value="å®¶æ—é " name="Family"><input type="hidden" name="action" value="logout"> <input
+			type="submit" value="ç™»å‡º" name="logoutButton">
 								</span>
 							</form>
 						</td>
@@ -56,9 +56,9 @@ input[type="submit"] {
 								cellpadding="10" border='0' BGCOLOR=#FFFAF2>
 								<tr style="width: 150px; height: 71px;">
 									<td valign="middle"><img src="https://ppt.cc/fLreBx@.png"
-										border="1" alt="PPT.ccÁY¹ÏªA°È" title="PPT.ccÁY¹ÏªA°È"
+										border="1" alt="PPT.ccç¸®åœ–æœå‹™" title="PPT.ccç¸®åœ–æœå‹™"
 										style="width: 73px; height: 71px;"> <font size="4"
-										face="·L³n¥¿¶ÂÅé"> <b> <%
+										face="å¾®è»Ÿæ­£é»‘é«”"> <b> <%
  	UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
  	String name = user.getName();
  	out.println(name);
@@ -67,15 +67,15 @@ input[type="submit"] {
 									</font></td>
 								</tr>
 								<tr>
-									<td><font size="4" face="·L³n¥¿¶ÂÅé"> <b> <%
- 	String mail = user.getName();
+									<td><font size="4" face="å¾®è»Ÿæ­£é»‘é«”"> <b> <%
+ 	String mail = user.getmail();
  	String institute = user.getInstitute();
  	String depart = user.getDepart();
  	String birthday = user.getBirthday();
- 	out.println("¥Í¤é : " + birthday + "<br>");
- 	out.println("«H½c : " + mail + "<br>");
- 	out.println("¾Ç°| : " + institute + "<br>");
- 	out.println("¨t¯Å : " + depart + "<br>");
+ 	out.println("ç”Ÿæ—¥ : " + birthday + "<br>");
+ 	out.println("ä¿¡ç®± : " + mail + "<br>");
+ 	out.println("å­¸é™¢ : " + institute + "<br>");
+ 	out.println("ç³»ç´š : " + depart + "<br>");
  %>
 										</b>
 									</font></td>
@@ -83,7 +83,7 @@ input[type="submit"] {
 								<tr>
 							</table>
 						</td>
-						<td>°ÊºA­Ì<br>¶K¤å­Ì
+						<td>å‹•æ…‹å€‘<br>è²¼æ–‡å€‘
 						</td>
 					</tr>
 				</table>
