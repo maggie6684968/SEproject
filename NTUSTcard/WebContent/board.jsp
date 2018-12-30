@@ -1,10 +1,13 @@
 <%@ page language="java" contentType="text/html;charset=big5"%>
 <%@ page import="defult.UserInfoBean"%>
+<%@ page import="defult.PostDataBean"%>
 <%@ page import="defult.DBController"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
-<%	DBController dbc = new DBController();
-	ArrayList<UserInfoBean> temp = dbc.getData();
+<jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
+<%	
+	DBController dbc = new DBController();
+	ArrayList<PostDataBean> temp = dbc.getPostData();
 %>
 <html>
 <head>
@@ -112,48 +115,26 @@ input[type="email"] {
 				</tr>
 		</table>
 		<table border=1 style="width: 750px;">
-				<tr>
-					<td width="20%" align="left" >
-						<b><font size="2" face="微軟正黑體">作者</font></b>
-					</td>
-					<td width="60%" align="left">
-						<b><font size="2" face="微軟正黑體">貼文</font></b>
-					</td>
-					<td width="20%" align="left">
-						<b><font size="2" face="微軟正黑體">文章權限(EX:版主、廣告)</font></b>
-						<br>
-						<input type="button" value="heart" name="Heart">
-						<input type="button" value="comment" name="Comment">
-					</td>
-				</tr>
-				<tr>
-					<td width="20%" align="left" >
-						<b><font size="2" face="微軟正黑體">作者</font></b>
-					</td>
-					<td width="60%" align="left">
-						<b><font size="2" face="微軟正黑體">貼文</font></b>
-					</td>
-					<td width="20%" align="left">
-						<b><font size="2" face="微軟正黑體">文章權限(EX:版主、廣告)</font></b>
-						<br>
-						<input type="button" value="heart" name="Heart">
-						<input type="button" value="comment" name="Comment">
-					</td>
-				</tr>
-				<tr>
-					<td width="20%" align="left" >
-						<b><font size="2" face="微軟正黑體">作者</font></b>
-					</td>
-					<td width="60%" align="left">
-						<b><font size="2" face="微軟正黑體">貼文</font></b>
-					</td>
-					<td width="20%" align="left">
-						<b><font size="2" face="微軟正黑體">文章權限(EX:版主、廣告)</font></b>
-						<br>
-						<input type="button" value="heart" name="Heart">
-						<input type="button" value="comment" name="Comment">
-					</td>
-				</tr>
+			<%				
+				for (int i = 0; i < temp.size(); i++) {
+					out.println("<tr>");
+					out.print("<td width='20%' align='left'>");
+					out.print("<b><font size='2' face='微軟正黑體'>");
+					out.print(temp.get(i).author + "</font></b></td>");
+					
+					out.print("<td width='60%' align='left'>");
+					out.print("<b><font size='2' face='微軟正黑體'>");
+					out.print(temp.get(i).content + "</font></b></td>");
+					
+					out.print("<td width='20%' align='left'>");
+					out.print("<b><font size='2' face='微軟正黑體'>");
+					out.print(temp.get(i).priority + "</font></b><br>");
+					out.print("<input type='button' value='heart");
+					out.print(temp.get(i).heart+ "' name='Heart'>");
+					out.print("<input type='button' value='comment' name='Comment'></td>");
+					out.println("</tr>");
+				}
+			%>
 		</table>
 </body>
 </html>
