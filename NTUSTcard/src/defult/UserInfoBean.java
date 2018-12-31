@@ -8,6 +8,8 @@ public class UserInfoBean {
 	public String institute;
 	public String depart;
 	public String birthday;
+	public int coin;
+	public String hobby;
 
 	public UserInfoBean() {
 		id = "";
@@ -17,6 +19,8 @@ public class UserInfoBean {
 		institute = "";
 		depart = "";
 		birthday = "";
+		coin = 0;
+		hobby = "";
 	}
 
 	public void setUserName(String id) {
@@ -74,4 +78,19 @@ public class UserInfoBean {
 		return this.birthday;
 	}
 	
+	public void setcoin(int coin) {
+		this.coin = coin;
+	}
+
+	public int getcoin() {
+		return this.coin;
+	}
+	
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
+
+	public String getHobby() {
+		return this.hobby;
+	}
 }

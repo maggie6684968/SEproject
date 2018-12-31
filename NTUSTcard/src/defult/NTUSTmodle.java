@@ -10,6 +10,8 @@ public class NTUSTmodle {
 	protected String view;
 	DBController dbc = new DBController();
 	ArrayList<UserInfoBean> userInfos = dbc.getUserData();
+	ArrayList<PostDataBean> postDatas = dbc.getPostData();
+	int userIndex;
 	
 	public void doAuthenticate(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -31,22 +33,105 @@ public class NTUSTmodle {
 				bean.setMail(userInfos.get(i).mail);
 				session.setAttribute("userInfo", bean);
 				view = "/Welcome.jsp";
+				userIndex = i;
 				return;
 			}
 		}
 		view = "/LoginError.jsp";
 	}
-	
+	// 轉往註冊畫面
+    public void toSignUp(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/SignUp.jsp";
+    }
+    public void toFamily(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/Family.jsp";      
+    }
+    public void toBoard(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/Board.jsp";      
+    }
+    public void toHome(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/Welcome.jsp";      
+    }
+    public void toSecrecy(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/Secrecy.jsp";      
+    }
+    public void toProfile(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/Profile.jsp";      
+    }
+    public void toCard(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/Card.jsp";      
+    }
+    
+    // 轉往登入畫面
+    public void backToLogin(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/Login.jsp";
+    }
+    
 	public void doSignUp(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		UserInfoBean bean = new UserInfoBean();
+		bean.setUserName(request.getParameter("username"));
+		bean.setPassword(request.getParameter("password"));
+		bean.setName(request.getParameter("realName"));
+		bean.setBirthday(request.getParameter("birthday"));
+		bean.setDepart(request.getParameter("depart"));
+		bean.setInstitute(request.getParameter("institute"));
+		bean.setMail(request.getParameter("mail"));
+		session.setAttribute("userInfo", bean);
 		
-				
-		
-		
-		
+		DBController dbc = new DBController();
+		dbc.setUserData(bean);
 		view = "/Welcome.jsp";
 	}
-	
+	public void updateProfile(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		String ID = userInfos.get(userIndex).id;
+		
+		String depart = request.getParameter("depart");
+		String institute = request.getParameter("institute");
+		String hobby = request.getParameter("hobby");
+		
+		DBController dbc = new DBController();
+		dbc.modifyProfileData(ID,depart,institute,hobby);
+		view = "/Welcome.jsp";
+	}
+	public void updatePrivacyData(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		UserInfoBean bean = new UserInfoBean();
+		bean.setUserName(request.getParameter("username"));
+		bean.setPassword(request.getParameter("password"));
+		bean.setName(request.getParameter("realName"));
+		bean.setBirthday(request.getParameter("birthday"));
+		bean.setDepart(request.getParameter("depart"));
+		bean.setInstitute(request.getParameter("institute"));
+		bean.setMail(request.getParameter("mail"));
+		session.setAttribute("userInfo", bean);
+		
+		DBController dbc = new DBController();
+		dbc.modifyPrivacyDataData(bean);
+		view = "/Welcome.jsp";
+	}
+	// 登出
+    public void doLogout(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+        HttpSession session = request.getSession();
+        session.removeAttribute("userInfo");   // 把身分驗證旗號清掉
+        session.invalidate(); // 清除 session 內所有 attributes 與物件的繫結關係
+        view = "/Login.jsp";           // 再轉往登入畫面
+    }
+    
+    
 	public void setView(String aView) {
 		view = aView;
 	}
