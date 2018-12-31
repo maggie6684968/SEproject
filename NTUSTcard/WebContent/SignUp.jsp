@@ -60,7 +60,8 @@ input[type="email"] {
 
 </head>
 <body bgcolor="#FFFAF2">
-	<table align="center" style="width: 1000px;">
+	<Form method="post" action="main" style="height: 432px;">
+		<table align="center" style="width: 1000px;">
 				<b><font size="6" face="微軟正黑體">SIGN UP</font></b>
 			<table style="border: 2px #7878FF solid; width: 900px"
 					cellpadding="10" border='0' BGCOLOR=#FFFAF2>
@@ -104,7 +105,7 @@ input[type="email"] {
 				<tr>
 					<td width="40%" align="right">				
 						<b><font size="2" face="微軟正黑體">E-mail:</font></b>
-								<input type="email" name="email"placeholder="XXX@gmail.com、XXX@yahoo.com.tw">
+								<input type="email" name="email" placeholder="XXX@gmail.com、XXX@yahoo.com.tw">
 					</td>				
 					<td width="20%">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -112,19 +113,17 @@ input[type="email"] {
 					</td>
 								
 					<td width="40%" align="left">			
-								<b><font size="2" face="微軟正黑體">Department:</font></b>
-								<select name="department">
-　								<option value="CSIE">資訊工程系</option>
-								<option value="ECE">電子工程系</option>
-								<option value="EE">電機工程系</option>
-								<option value="ECO">經濟系</option>
-								</select>
+								<b><font size="2" face="微軟正黑體">Institute:	</font></b>
+								<select name="institute">
+　							<option value="CSIE" selected>電資學院</option>
+							<option value="ECO">財經學院</option>
+							</select>
 					</td>		
 				</tr>
 				<tr>
 					<td width="40%" align="right">				
 						<b><font size="2" face="微軟正黑體">Real name:</font></b>
-							<input type="text" name="RealName" BGCOLOR="#F5F5F5"
+							<input type="text" name="realName" BGCOLOR="#F5F5F5"
 								HTML_CTL="Text" maxLength="10" size="15"
 								placeholder="請填入你的真實姓名" style="width: 175px;">
 					</td>				
@@ -134,13 +133,20 @@ input[type="email"] {
 					</td>
 						
 					<td width="40%" align="left">
+						<b><font size="2" face="微軟正黑體">Department:</font></b>
+							<select name="department">
+　							<option value="CSIE">資訊工程系</option>
+							<option value="ECE">電子工程系</option>
+							<option value="EE">電機工程系</option>
+							<option value="ECO">經濟系</option>
+							</select>
 						<b><font size="2" face="微軟正黑體">Grade:</font></b>
-						<select name="Grade">
-　						<option value="1">freshman</option>
-						<option value="2">sophomore</option>
-						<option value="3">junior</option>
-						<option value="4">senior</option>
-						</select>
+							<select name="Grade">
+　							<option value="1">freshman</option>
+							<option value="2">sophomore</option>
+							<option value="3">junior</option>
+							<option value="4">senior</option>
+							</select>
 					</td>		
 				</tr>
 				<tr>
@@ -151,7 +157,7 @@ input[type="email"] {
 				</tr>			
 				<tr>
 					<td  align="center" colspan=3>				
-						<input type=submit value="Sign up">
+						<input type=submit name="action" value="signUp">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<b><font size="2" face="微軟正黑體">有帳號了?<a href="Login.jsp">直接登入</a></font></b>
@@ -159,7 +165,7 @@ input[type="email"] {
 				</tr>
 			</table>			
 			</table>
-		</center>
+		
 	</Form>
 </body>
 </html>

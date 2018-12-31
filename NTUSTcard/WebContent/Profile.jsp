@@ -4,7 +4,7 @@
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <%	DBController dbc = new DBController();
-	ArrayList<UserInfoBean> temp = dbc.getData();
+	ArrayList<UserInfoBean> temp = dbc.getUserData();
 %>
 
 <html>
@@ -105,6 +105,15 @@ input[type="text"] {
 						<b><font size="2" face="微軟正黑體">update your new profile photo:	</font></b>
 						<input type="file" name="photo">	
 					</td>
+				</tr>
+				<tr>
+					<td width="30%" align="left">				
+						<b><font size="2" face="微軟正黑體">Institute:		</font></b>
+							<select name="department">
+　							<option value="CSIE" selected>電資學院</option>
+							<option value="ECO">財經學院</option>
+							</select>
+					</td>		
 				</tr>
 				<tr>
 					<td width="30%" align="left">				

@@ -4,7 +4,7 @@
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <%	DBController dbc = new DBController();
-	ArrayList<UserInfoBean> temp = dbc.getData();
+	ArrayList<UserInfoBean> temp = dbc.getUserData();
 %>
 <html>
 <head>
