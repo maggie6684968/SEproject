@@ -9,7 +9,7 @@ public class NTUSTmodle {
 	
 	protected String view;
 	DBController dbc = new DBController();
-	ArrayList<UserInfoBean> userInfos = dbc.getData();
+	ArrayList<UserInfoBean> userInfos = dbc.getUserData();
 	
 	public void doAuthenticate(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
@@ -20,7 +20,7 @@ public class NTUSTmodle {
 			if((userInfos.get(i).id).equals(userName)&&(userInfos.get(i).password).equals(password))
 			{
 				HttpSession session = request.getSession();
-				// ­Y¨­¤ÀÅçÃÒµL»~¡A´N«Ø¥ß userInfo ª«¥ó¡A¨Ã«ü©w¤@­Ó attribute »P¤§Ã´µ²
+				// è‹¥èº«åˆ†é©—è­‰ç„¡èª¤ï¼Œå°±å»ºç«‹ userInfo ç‰©ä»¶ï¼Œä¸¦æŒ‡å®šä¸€å€‹ attribute èˆ‡ä¹‹ç¹«çµ
 				UserInfoBean bean = new UserInfoBean();
 				bean.setUserName(userName);
 				bean.setPassword(password);
