@@ -22,7 +22,7 @@ public class PostDataBean {
 		postTime = "";
 		heart = 0;
 		comments = 0;
-		comment = new ArrayList();
+		comment = new ArrayList<String>();
 	}
 
 	public void setPostID(int id) {
