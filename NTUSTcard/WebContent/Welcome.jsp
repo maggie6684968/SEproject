@@ -68,7 +68,7 @@ input[type="submit"] {
 								</tr>
 								<tr>
 									<td><font size="4" face="微軟正黑體"> <b> <%
- 	String mail = user.getmail();
+ 	String mail = user.getMail();
  	String institute = user.getInstitute();
  	String depart = user.getDepart();
  	String birthday = user.getBirthday();
