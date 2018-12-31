@@ -124,9 +124,11 @@ input[type="email"] {
 				</tr>
 				<tr>
 					<td width="10%" align="center" colspan=3>
-						<input type=submit value="Cancel">
+						<form method="post" action="main">
+						<input type=submit value="Cancel" name="action">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type=submit value="UpdatePrivacyData">
+						<input type=submit value="UpdatePrivacyData" name="action">
+						</form>
 					</td>
 					
 				</tr>		

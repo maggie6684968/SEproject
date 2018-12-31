@@ -11,7 +11,7 @@
 %>
 <html>
 <head>
-<title>family</title>
+<title>board</title>
 <style>
 input[type="button"] {
 	border: 1px #7878FF solid;
@@ -87,14 +87,15 @@ input[type="email"] {
 							</form>
 						</td>
 					</tr>
-				</table>
+	</table>
 	<table style="width: 750px;">
-		<b><font size="6" face="微軟正黑體">我的家族</font></b>
+		<b><font size="6" face="微軟正黑體">布告欄</font></b>
 				<tr>
 					<td width="40%" valign="bottom">
 							<form method="post" action="main">
 								<span style="float: right;">
 								<input type="button" value="發布文章" name="post article">
+								<input type="button" value="發布廣告" name="post AD">
 								</span>
 							</form>
 					</td>
@@ -106,9 +107,8 @@ input[type="email"] {
 				<tr>
 					<td valign="bottom" colspan=2>
 							<form method="post" action="main">
-								<input type="button" value="軟骨小蛆" name="post article">
-								<input type="button" value="pokemon" name="post AD">
-								<input type="button" value="我想吃披薩" name="post AD">
+								<input type="button" value="所有班級看板" name="post article">
+								<input type="button" value="四資工三" name="post AD">
 								<input type="button" value="將資料庫的看板名稱填進來" name="post AD">
 							</form>
 					</td>
@@ -136,6 +136,5 @@ input[type="email"] {
 				}
 			%>
 		</table>
-		
 </body>
 </html>

@@ -45,20 +45,20 @@ input[type="text"] {
 					<tr>
 						<td>
 							<form method="post" action="main">
-								<span style="float: left;"> <input type="button"
-									value="抽卡" name="GetCardButton"> <input type="button"
-									value="個人資料" name="Profile"> <input type="button"
-									value="隱私設定" name="Secrecy">
+								<span style="float: left;">
+									<input type="submit" value="Card" name="action">
+									<input type="submit" value="Profile Setting" name="action">
+									<input type="submit" value="Secrecy Setting" name="action">
 								</span>
 							</form>
 						</td>
 						<td>
 							<form method="post" action="main">
-								<span style="float: right;"> <input type="button"
-									value="首頁" name="HomePage"> <input type="button"
-									value="布告欄" name="Board"> <input type="button"
-									value="家族頁" name="Family"><input type="hidden" name="action" value="logout"> <input
-			type="submit" value="登出" name="logoutButton">
+								<span style="float: right;">
+									<input type="submit" value="Home Page" name="action">
+									<input type="submit" value="Board" name="action">
+									<input type="submit" value="Family" name="action">
+									<input type="submit" value="logout" name="action">
 								</span>
 							</form>
 						</td>
@@ -108,15 +108,18 @@ input[type="text"] {
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
-						<b><font size="2" face="微軟正黑體">Institute:		</font></b>
-							<select name="department">
+						<form method="post" action="main">
+							<b><font size="2" face="微軟正黑體">Institute:		</font></b>
+							<select name="institute">
 　							<option value="CSIE" selected>電資學院</option>
 							<option value="ECO">財經學院</option>
 							</select>
+						</form>
 					</td>		
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
+						<form method="post" action="main">
 						<b><font size="2" face="微軟正黑體">Department:		</font></b>
 							<select name="department">
 　							<option value="CSIE" selected>資訊工程系</option>
@@ -124,6 +127,7 @@ input[type="text"] {
 							<option value="EE">電機工程系</option>
 							<option value="ECO">經濟系</option>
 							</select>
+						</form>
 					</td>		
 				</tr>
 				<tr>
@@ -137,9 +141,11 @@ input[type="text"] {
 							</select>
 					</td>		
 					<td width="40%" align="center" colspan=2>
-						<input type=submit value="Cancel">
+						<form method="post" action="main">
+						<input type=submit value="Cancel" name="action">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type=submit value="UpdateProfile">
+						<input type=submit value="UpdateProfile" name="action">
+						</form>
 					</td>
 				</tr>
 			</table>

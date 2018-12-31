@@ -38,8 +38,8 @@ input[type="password"] {
 
 </head>
 <body bgcolor="D9D9D9" style="height: 457px;">
-	<Form method="post" action="main" style="height: 432px;">
-		<input type="hidden" name="action" value="authenticate">
+	<Form method="post" action="main">
+		<!--<input type="hidden" name="action" value="authenticate">-->
 		<center>
 			<br> <br>
 			<table border=2 BGCOLOR=#E8E8E8 BORDERCOLOR=##000000
@@ -61,10 +61,13 @@ input[type="password"] {
 									style="width: 175px;">
 							</p>
 							<p align="center">
-								<input type=submit value="login">
+								<!-- <input type=submit value="login"> -->
+								<input type=submit name="action" value="login">
 							</p>
 							<p align="center">
-								<input type=submit value="Sign up">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input type=submit value="Forgot">
+								<input type=submit name="action" value="Sign Up">
+								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+								<input type=submit name="action" value="Forgot">
 							</p>
 						</div>
 

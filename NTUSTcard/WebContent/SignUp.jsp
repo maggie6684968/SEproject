@@ -60,7 +60,7 @@ input[type="email"] {
 
 </head>
 <body bgcolor="#FFFAF2">
-	<Form method="post" action="main" style="height: 432px;">
+	<Form method="post" action="main">
 		<table align="center" style="width: 1000px;">
 				<b><font size="6" face="微軟正黑體">SIGN UP</font></b>
 			<table style="border: 2px #7878FF solid; width: 900px"
@@ -105,7 +105,7 @@ input[type="email"] {
 				<tr>
 					<td width="40%" align="right">				
 						<b><font size="2" face="微軟正黑體">E-mail:</font></b>
-								<input type="email" name="email" placeholder="XXX@gmail.com、XXX@yahoo.com.tw">
+								<input type="email" name="mail" placeholder="XXX@gmail.com、XXX@yahoo.com.tw">
 					</td>				
 					<td width="20%">
 					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -115,7 +115,7 @@ input[type="email"] {
 					<td width="40%" align="left">			
 								<b><font size="2" face="微軟正黑體">Institute:	</font></b>
 								<select name="institute">
-　							<option value="CSIE" selected>電資學院</option>
+　							<option value="EE" selected>電資學院</option>
 							<option value="ECO">財經學院</option>
 							</select>
 					</td>		
@@ -134,7 +134,7 @@ input[type="email"] {
 						
 					<td width="40%" align="left">
 						<b><font size="2" face="微軟正黑體">Department:</font></b>
-							<select name="department">
+							<select name="depart">
 　							<option value="CSIE">資訊工程系</option>
 							<option value="ECE">電子工程系</option>
 							<option value="EE">電機工程系</option>
@@ -160,10 +160,11 @@ input[type="email"] {
 						<input type=submit name="action" value="signUp">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<b><font size="2" face="微軟正黑體">有帳號了?<a href="Login.jsp">直接登入</a></font></b>
+						<b><font size="2" face="微軟正黑體">有帳號了?<input type=hidden name="action" value="Back">
+						<a href="Login.jsp">直接登入</a></font></b>
 					</td>		
 				</tr>
-			</table>			
+			</table>
 			</table>
 		
 	</Form>
