@@ -154,5 +154,21 @@ public class DBController {
 				System.out.println(ex);
 			}
 		}
+		public ArrayList<String> getCommentData(int PostID) {
+			ArrayList<String> result = new ArrayList<String>();
+			try {
+				String query = "select comments from post WHERE id = PostID";
+				rs = st.executeQuery(query);
+				System.out.println("Records for Database");
+				int comments = rs.getInt("comments");
+				for(int i=0; i < comments;i++)
+				{
+					result.add(rs.getString("comment" +Integer.toString(i)));
+				}
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}	
+			return result;
+		}
 		
 }	
