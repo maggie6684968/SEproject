@@ -66,6 +66,7 @@ input[type="email"] {
 			<b><font size="6" face="微軟正黑體">Privacy Settings</font></b>
 			<table style="border: 2px #7878FF solid; width: 900px"
 					cellpadding="10" border='0' BGCOLOR=#FFFAF2>
+			<form method="post" action="main">
 				<tr>
 					<td width="10%" align="left" >
 					</td>
@@ -81,7 +82,7 @@ input[type="email"] {
 					</td>
 					<td width="40%" align="left" >
 						<b><font size="2" face="微軟正黑體">Old password:</font></b>
-						<input type="password" name="password" BGCOLOR="#F5F5F5"
+						<input type="password" name="oldPassword" BGCOLOR="#F5F5F5"
 									HTML_CTL="Text" maxLength="10" size="15" placeholder="填入6-20位英文字母或數字"
 									style="width: 175px;">
 					</td>
@@ -99,7 +100,7 @@ input[type="email"] {
 					</td>
 					<td width="40%" align="left" >
 						<b><font size="2" face="微軟正黑體">Enter new password:</font></b>
-						<input type="password" name="password" BGCOLOR="#F5F5F5"
+						<input type="password" name="newPassword" BGCOLOR="#F5F5F5"
 									HTML_CTL="Text" maxLength="10" size="15" placeholder="填入6-20位英文字母或數字"
 									style="width: 175px;">
 					</td>
@@ -114,7 +115,7 @@ input[type="email"] {
 					</td>
 					<td width="40%" align="left" >
 						<b><font size="2" face="微軟正黑體">Verify new password:</font></b>
-						<input type="password" name="password" BGCOLOR="#F5F5F5"
+						<input type="password" name="verifyPassword" BGCOLOR="#F5F5F5"
 									HTML_CTL="Text" maxLength="10" size="15" placeholder="填入6-20位英文字母或數字"
 									style="width: 175px;">
 					</td>
@@ -124,16 +125,14 @@ input[type="email"] {
 				</tr>
 				<tr>
 					<td width="10%" align="center" colspan=3>
-						<form method="post" action="main">
 						<input type=submit value="Cancel" name="action">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type=submit value="UpdatePrivacyData" name="action">
-						</form>
+						
 					</td>
 					
 				</tr>		
-			</table>
-		</center>
-	</Form>
+			</form>
+		</table>
 </body>
 </html>

@@ -70,8 +70,6 @@ input[type="password"] {
 								<input type=submit name="action" value="Forgot">
 							</p>
 						</div>
-
-
 					</td>
 				</tr>
 			</table>

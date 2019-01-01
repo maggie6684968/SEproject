@@ -10,10 +10,10 @@ public class DBController {
 
 	public DBController() {
 		try {
-			// Class ï¿½ï¿½ï¿½Rï¿½A forName() ï¿½ï¿½kï¿½ï¿½{ï¿½ÊºAï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½O
+			// Class ªºÀRºA forName() ¤èªk¹ê²{°ÊºA¥[¸üÃþ§O
 			Class.forName("com.mysql.jdbc.Driver");
-			// 3306|MySQLï¿½}ï¿½ñ¦¹ºÝ¤f
-			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntustsql?serverTimezone=UTC", "root", "B10515027");
+			// 3306|MySQL¶}©ñ¦¹ºÝ¤f
+			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntustsql?serverTimezone=UTC", "root", "1234");
 			st = con.createStatement();
 
 		} catch (Exception ex) {
@@ -38,7 +38,6 @@ public class DBController {
 					data.birthday = rs.getString("birthday");
 					data.coin = rs.getInt("coin");
 					data.hobby = rs.getString("hobby");
-					
 					result.add(data);
 				}
 				return result;
@@ -66,21 +65,31 @@ public class DBController {
 		public void modifyProfileData(String ID, String depart,String institute, String hobby) {
 			try {
 				
-				String SQL = "UPDATE user SET institute = " +
-						institute + ", depart = " + depart+", hobby = "
-						+ hobby + " WHERE id= " + ID + ";";
+				String SQL = "UPDATE user SET institute ='" +
+						institute + "', depart ='" + depart + "', hobby ='"
+						+ hobby + "' WHERE id='" + ID + "'";
 				st.execute(SQL);
 				
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}
 		}
-		public void modifyPrivacyDataData(UserInfoBean data) {
+		public void modifySecrecyData(String ID,String newPassword,String mail) {
 			try {
-				
-				String SQL = "UPDATE user SET institute = " +
-						data.institute + ", depart = " + data.depart+", hobby = "
-						+ data.hobby + " WHERE id= " + data.id + ";";
+				String SQL="";
+				if((!newPassword.equals(""))&&(!mail.equals(""))) {
+					SQL = "UPDATE user SET password ='" +
+							newPassword + "', mail ='" + mail + "' WHERE id='" + ID + "'";
+					
+				} else if((!newPassword.equals(""))&&(mail.equals(""))) {
+					SQL = "UPDATE user SET password ='" +
+							newPassword + "' WHERE id='" + ID + "'";
+					
+				} else if((newPassword.equals(""))&&(!mail.equals(""))) {
+					SQL = "UPDATE user SET mail ='" +
+							mail + "' WHERE id='" + ID + "'";
+					
+				}else return;
 				st.execute(SQL);
 				
 			} catch (Exception ex) {
