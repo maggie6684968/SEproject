@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class NTUSTmodle {
 	
 	protected String view;
+	//DBController dbc = new MySqlDBController();
 	DBController dbc = new DBController();
 	ArrayList<UserInfoBean> userInfos = dbc.getUserData();
 	ArrayList<PostDataBean> postDatas = dbc.getPostData();
