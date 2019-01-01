@@ -21,32 +21,36 @@ public class ServletController extends HttpServlet {
 
     	
     	
-        // ¤U­±¨â¦æÅı¤¤¤å¦r¯à¥¿½TÅã¥Ü
+        // ä¸‹é¢å…©è¡Œè®“ä¸­æ–‡å­—èƒ½æ­£ç¢ºé¡¯ç¤º
         response.setContentType("text/html; charset=big5");
         request.setCharacterEncoding("big5");
 
-        String action = request.getParameter("action"); // ¨ú±o¥Ø«e¨Ï¥ÎªÌ­n°õ¦æªº°Ê§@
-
-        // ­Y¨Ï¥ÎªÌ¨­¤À©|¥¼ÅçÃÒ¡A¥B¥Ø«eªº"°Ê§@"¤£¬O­n¶i¦æÅçÃÒ¡A´N¤Á¨ìµn¤Jµe­±
+        String action = request.getParameter("action"); // å–å¾—ç›®å‰ä½¿ç”¨è€…è¦åŸ·è¡Œçš„å‹•ä½œ
+	
+	if(action==null){ 
+		//èµ·å§‹ç•«é¢aciotnæ²’æœ‰ä»»ä½•å€¼ï¼Œçµ¦ä»–initialize
+        	gotoPage("/Login.jsp", request, response);
+        }
+        // è‹¥ä½¿ç”¨è€…èº«åˆ†å°šæœªé©—è­‰ï¼Œä¸”ç›®å‰çš„"å‹•ä½œ"ä¸æ˜¯è¦é€²è¡Œé©—è­‰ï¼Œå°±åˆ‡åˆ°ç™»å…¥ç•«é¢
         //if (!isAuthenticated(request) && !("login".equals(action))) {//"authenticate"->"login"
         //    doLogin(request, response);
         //    return;
         //}
         if ("login".equals(action)) {//"authenticate"->"login"
-        	ntustmodel.doAuthenticate(request, response);  // °õ¦æ¨­¤ÀÅçÃÒ
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+        	ntustmodel.doAuthenticate(request, response);  // åŸ·è¡Œèº«åˆ†é©—è­‰
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("logout".equals(action)) {
-        	ntustmodel.doLogout(request, response);        // °õ¦æµn¥X
-        	String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+        	ntustmodel.doLogout(request, response);        // åŸ·è¡Œç™»å‡º
+        	String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
-        else if ("Back".equals(action)) {//login error page¤¤«ö¤Uback«Ø¦^¨ìlogin­¶­±
+        else if ("Back".equals(action)) {//login error pageä¸­æŒ‰ä¸‹backå»ºå›åˆ°loginé é¢
         	ntustmodel.backToLogin(request, response);
         	String targetURL = ntustmodel.getView();
             if ((targetURL != null) && (targetURL != "")) {
@@ -55,77 +59,77 @@ public class ServletController extends HttpServlet {
         }
         else if ("Sign Up".equals(action)) {
         	ntustmodel.toSignUp(request, response);  
-        	String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+        	String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("signUp".equals(action)) {
-        	ntustmodel.doSignUp(request, response);  // ¶i¦æµù¥U
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+        	ntustmodel.doSignUp(request, response);  // é€²è¡Œè¨»å†Š
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Family".equals(action)) {
         	ntustmodel.toFamily(request, response); 
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Board".equals(action)) {
         	ntustmodel.toBoard(request, response);  
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Home Page".equals(action)) {
         	ntustmodel.toHome(request, response);  
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Secrecy Setting".equals(action)) {
         	ntustmodel.toSecrecy(request, response);  
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Profile Setting".equals(action)) {
         	ntustmodel.toProfile(request, response);  
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Card".equals(action)) {
         	ntustmodel.toCard(request, response);  
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Cancel".equals(action)) {
         	ntustmodel.toHome(request, response); 
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("UpdateProfile".equals(action)) {
         	ntustmodel.updateProfile(request, response);  
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("UpdatePrivacyData".equals(action)) {
         	ntustmodel.updatePrivacyData(request, response); 
-            String targetURL = ntustmodel.getView();// ¨ú±o±ıÂà°eªº­¶­± (view)
+            String targetURL = ntustmodel.getView();// å–å¾—æ¬²è½‰é€çš„é é¢ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
@@ -137,7 +141,7 @@ public class ServletController extends HttpServlet {
         
     }
 
-    // Âà©¹«ü©wªººô§}
+    // è½‰å¾€æŒ‡å®šçš„ç¶²å€
     private void gotoPage(String targetURL, HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -146,8 +150,8 @@ public class ServletController extends HttpServlet {
         rd.forward(request, response);
     }
 
-    // ¶Ç¦^¥Ø«eªº¨Ï¥ÎªÌ¬O§_¤w¸g³q¹L¨­¤ÀÅçÃÒ¡]¬O§_¤wµn¤J¡^
-    // ¥u­nÀË¬d userInfo ª«¥ó¬O§_¦s¦b´N¯à±oª¾¬O§_¤wµn¤J
+    // å‚³å›ç›®å‰çš„ä½¿ç”¨è€…æ˜¯å¦å·²ç¶“é€šéèº«åˆ†é©—è­‰ï¼ˆæ˜¯å¦å·²ç™»å…¥ï¼‰
+    // åªè¦æª¢æŸ¥ userInfo ç‰©ä»¶æ˜¯å¦å­˜åœ¨å°±èƒ½å¾—çŸ¥æ˜¯å¦å·²ç™»å…¥
     private boolean isAuthenticated(HttpServletRequest request) {
         boolean result = false;
         HttpSession session = request.getSession();
