@@ -10,9 +10,9 @@ public class DBController {
 
 	public DBController() {
 		try {
-			// Class ªºÀRºA forName() ¤èªk¹ê²{°ÊºA¥[¸üÃş§O
+			// Class çš„éœæ…‹ forName() æ–¹æ³•å¯¦ç¾å‹•æ…‹åŠ è¼‰é¡åˆ¥
 			Class.forName("com.mysql.jdbc.Driver");
-			// 3306|MySQL¶}©ñ¦¹ºİ¤f
+			// 3306|MySQLé–‹æ”¾æ­¤ç«¯å£
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntustsql?serverTimezone=UTC", "root", "1234");
 			st = con.createStatement();
 
@@ -123,6 +123,20 @@ public class DBController {
 			}	
 			return result;
 		}
-		
+	public void setPostData(PostDataBean data) {
+			try {
+				
+				String SQL = "INSERT post " +
+
+				"(id,author,board,priority,content,postTime,comments,comment)" +
+
+         		" VALUES ('" + data.id + "','" + data.author + "','" + data.board + "','" + data.priority + "','"
+         					 + data.content + "','" + data.postTime + "','" + data.comments +  "','" + data.comment + "')";
+         		st.execute(SQL);
+				
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}	
 		
 }	
