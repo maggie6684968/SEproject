@@ -125,14 +125,21 @@ public class DBController {
 		}
 	public void setPostData(PostDataBean data) {
 			try {
-				
-				String SQL = "INSERT post " +
+				String SQL = "INSERT post " + "(id,author,board,priority,content,postTime,comments";
 
-				"(id,author,board,priority,content,postTime,comments,comment)" +
+					for(int i = 0; i < data.comments;i++) {
+						SQL += "," + "comment" + i ;
+					}
 
-         		" VALUES ('" + data.id + "','" + data.author + "','" + data.board + "','" + data.priority + "','"
-         					 + data.content + "','" + data.postTime + "','" + data.comments +  "','" + data.comment + "')";
-         		st.execute(SQL);
+					SQL += ") VALUES ('" + data.id + "','" + data.author + "','" + data.board + "','" + data.priority
+							 + "','" + data.content + "','" + data.postTime + "','" + data.comments; 
+
+				for(int i = 0; i < data.comments;i++) {
+					SQL += "','" + data.comment.get(i);
+				}
+
+				SQL += "')";
+				st.execute(SQL);
 				
 			} catch (Exception ex) {
 				System.out.println(ex);
