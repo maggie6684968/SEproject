@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DBController {
-	private Connection con;
-	private Statement st;
-	private ResultSet rs;
+	protected Connection con;
+	protected Statement st;
+	protected ResultSet rs;
 
 	public DBController() {
 		try {
