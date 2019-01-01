@@ -10,7 +10,6 @@
 	ArrayList<PostDataBean> tmp = dbc.getPostData();
 	
 	UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
- 	String name = user.getName();
  	
  	int post = tmp.size();
  	int post_count=0;
@@ -67,7 +66,7 @@ input[type="submit"] {
 											style="width: 73px; height: 71px;"> -->
 										<font size="4" face="·L³n¥¿¶ÂÅé"><b>
 										<%
-										 	out.println(name);
+										 	out.println(user.getUserName());
 										%>
 										</b></font>
 									</td>

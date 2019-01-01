@@ -38,7 +38,6 @@ public class DBController {
 					data.birthday = rs.getString("birthday");
 					data.coin = rs.getInt("coin");
 					data.hobby = rs.getString("hobby");
-					
 					result.add(data);
 				}
 				return result;
@@ -66,21 +65,31 @@ public class DBController {
 		public void modifyProfileData(String ID, String depart,String institute, String hobby) {
 			try {
 				
-				String SQL = "UPDATE user SET institute = " +
-						institute + ", depart = " + depart+", hobby = "
-						+ hobby + " WHERE id= " + ID + ";";
+				String SQL = "UPDATE user SET institute ='" +
+						institute + "', depart ='" + depart + "', hobby ='"
+						+ hobby + "' WHERE id='" + ID + "'";
 				st.execute(SQL);
 				
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}
 		}
-		public void modifyPrivacyDataData(UserInfoBean data) {
+		public void modifySecrecyData(String ID,String newPassword,String mail) {
 			try {
-				
-				String SQL = "UPDATE user SET institute = " +
-						data.institute + ", depart = " + data.depart+", hobby = "
-						+ data.hobby + " WHERE id= " + data.id + ";";
+				String SQL="";
+				if((!newPassword.equals(""))&&(!mail.equals(""))) {
+					SQL = "UPDATE user SET password ='" +
+							newPassword + "', mail ='" + mail + "' WHERE id='" + ID + "'";
+					
+				} else if((!newPassword.equals(""))&&(mail.equals(""))) {
+					SQL = "UPDATE user SET password ='" +
+							newPassword + "' WHERE id='" + ID + "'";
+					
+				} else if((newPassword.equals(""))&&(!mail.equals(""))) {
+					SQL = "UPDATE user SET mail ='" +
+							mail + "' WHERE id='" + ID + "'";
+					
+				}else return;
 				st.execute(SQL);
 				
 			} catch (Exception ex) {
