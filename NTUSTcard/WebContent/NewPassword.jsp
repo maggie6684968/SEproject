@@ -4,7 +4,7 @@
 <%@ page import="java.util.ArrayList"%>
 <html>
 <head>
-<title>Login</title>
+<title>New Password</title>
 <style>
 input[type="submit"] {
 	border: 2px black solid;
@@ -47,27 +47,22 @@ input[type="password"] {
 				<tr>
 					<td style="height: 346px; width: 333px">
 						<p align="center">
-							<b><font size="6" face="微軟正黑體">SIGN IN</font></b>
+							<b><font size="5" face="微軟正黑體">輸入新密碼及原本的信箱</font></b>
 						</p>
 						<div class="demo">
 							<p align="center">
 								<input type="text" name="username" BGCOLOR="#F5F5F5"
 									HTML_CTL="Text" maxLength="10" size="15"
-									placeholder="user name" style="width: 175px;">
+									placeholder="old password" style="width: 175px;">
 							</p>
 							<p align="center">
 								<input type="password" name="password" BGCOLOR="#F5F5F5"
-									HTML_CTL="Text" maxLength="10" size="15" placeholder="password"
+									HTML_CTL="Text" maxLength="10" size="15" placeholder="email"
 									style="width: 175px;">
 							</p>
 							<p align="center">
 								<!-- <input type=submit value="login"> -->
-								<input type=submit name="action" value="login">
-							</p>
-							<p align="center">
-								<input type=submit name="action" value="Sign Up">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type=submit name="action" value="Forgot">
+								<input type=submit name="action" value="Input">
 							</p>
 						</div>
 

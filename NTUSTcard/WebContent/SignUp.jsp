@@ -113,8 +113,8 @@ input[type="email"] {
 					</td>
 								
 					<td width="40%" align="left">			
-							<b><font size="2" face="微軟正黑體">Institute:	</font></b>
-							<select name="institute"> 
+								<b><font size="2" face="微軟正黑體">Institute:	</font></b>
+								<select name="institute">
 　							<option value="EE" selected>電資學院</option>
 							<option value="ECO">財經學院</option>
 							</select>
@@ -134,7 +134,7 @@ input[type="email"] {
 						
 					<td width="40%" align="left">
 						<b><font size="2" face="微軟正黑體">Department:</font></b>
-						<select name="depart">
+							<select name="depart">
 　							<option value="CSIE">資訊工程系</option>
 							<option value="ECE">電子工程系</option>
 							<option value="EE">電機工程系</option>

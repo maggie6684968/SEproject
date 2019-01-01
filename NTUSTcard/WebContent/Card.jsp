@@ -148,9 +148,9 @@ input[type="email"] {
 						<font size="3" face="·L³n¥¿¶ÂÅé">
 						<b>hobby:</b><br>
 						<b><%
-							String hobby = user.getHobby();
-							out.println(hobby);
+ 							
 						%></b>
+						<b>2 3 5 7 11 13 17</b>
 						</font>
 					</td>
 					
