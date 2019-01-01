@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html;charset=big5" %>
 <html>
 <head>
-<title>Wrong Password</title>
+<title>LoginError</title>
 </head>
 <body>
 <style>
@@ -20,17 +20,13 @@ input[type="submit"] {
 		<!--<input type="hidden" name="action" value="authenticate">-->
 		<center>
 			<br> <br>
-			<table border=2 BGCOLOR=#E8E8E8 BORDERCOLOR=##000000
-				style="width: 297px;">
 				<tr>
 					<td style="height: 346px; width: 333px">
 						<p align="center">
 							<b><font size="5" face="·L³n¥¿¶ÂÅé">±K½X¿ù»~¡I</font></b>
 						</p>
 							<p align="center">
-								<input type=submit name="action" value="Input Again">
-								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type=submit name="action" value="New password">
+								<input type=submit name="action" value="Back">
 							</p>
 						</div>
 

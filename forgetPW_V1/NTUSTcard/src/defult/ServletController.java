@@ -46,14 +46,14 @@ public class ServletController extends HttpServlet {
                 gotoPage(targetURL, request, response);
             }
         }
-        else if ("Input Again".equals(action)) {//login error page�����Uback�ئ^��login����
+        else if ("Back".equals(action)) {//login error page�����Uback�ئ^��login����
         	ntustmodel.backToLogin(request, response);
         	String targetURL = ntustmodel.getView();
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
-        else if ("New password".equals(action)) {//NewPassword page
+        else if ("Forgot".equals(action)) {//NewPassword page
         	ntustmodel.creatNewPW(request, response);
         	String targetURL = ntustmodel.getView();
             if ((targetURL != null) && (targetURL != "")) {
