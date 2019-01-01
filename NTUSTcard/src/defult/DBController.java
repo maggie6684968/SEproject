@@ -123,6 +123,36 @@ public class DBController {
 			}	
 			return result;
 		}
-		
+		public void setPostData(PostDataBean data) {
+			try {
+				String SQL = "INSERT post " + "(id,author,board,priority,content,postTime,comments";
+				
+				for(int i = 0; i < data.comments;i++) {
+					SQL += "," + "comment" + Integer.toString(i);
+				}
+				
+				SQL += ") VALUES ('" + data.id + "','" + data.author + "','" + data.board + "','" + data.priority
+						 + "','" + data.content + "','" + data.postTime + "','" + data.comments; 
+         		
+         		for(int i = 0; i < data.comments;i++) {
+        			SQL += "','" + data.comment.get(i);
+        		}
+				
+         		SQL += "')";
+         		st.execute(SQL);
+				
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}
+		public void spendCoin(int coin, String ID) {
+			try{
+				String SQL = "UPDATE user SET coin ='" +
+					coin + "' WHERE id='" + ID + "'";
+			st.execute(SQL);
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}
 		
 }	

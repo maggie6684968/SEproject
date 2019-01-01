@@ -3,8 +3,11 @@
 <%@ page import="defult.DBController"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
+<jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
+
 <%	DBController dbc = new DBController();
 	ArrayList<UserInfoBean> temp = dbc.getUserData();
+	UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
 %>
 <html>
 <head>
@@ -87,14 +90,15 @@ input[type="email"] {
 				</table>
 	<table style="width: 750px;">
 		<b><font size="6" face="微軟正黑體">AD setting</font></b>
+			<form method="post" action="main">
 				<tr>
 					<td width="30%" align="center">				
 						<b><font size="2" face="微軟正黑體">台科幣:	</font></b>
-						100
+						<% out.println(user.getcoin());%>
 					</td>
 					<td width="70%" align="center" valign="top" rowspan=3>
 						<textarea name="Content"  style="width:500px;height:400px;"
-							placeholder="你想要宣傳些甚麼呢?"></textarea>
+							placeholder="你想要宣傳些甚麼呢?"><%%></textarea>
 						<br><br><br>
 						<input type="file" name="photo">
 						<br><br><br>
@@ -104,13 +108,14 @@ input[type="email"] {
 				<tr>
 					<td width="30%" align="center">				
 						<b><font size="2" face="微軟正黑體">AD的權限:		</font></b>
-						<select id="level" name="Level" onchange="VALUE(this.id)">
-　								<option value="1" selected>class 1</option>
-								<option value="2">class 2</option>
-								<option value="3">class 3</option>
+						<select id="level" name="level" onchange="VALUE(this.id)">
+　								<option value=1 selected>class 1</option>
+								<option value=2>class 2</option>
+								<option value=3>class 3</option>
 						</select>
 					</td>		
 				</tr>
+			</form>
 				<tr>
 					<td width="30%" align="center">				
 						<b><font size="2" face="微軟正黑體" id="money">AD的價格:		10</font></b>

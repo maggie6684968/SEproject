@@ -135,6 +135,27 @@ public class ServletController extends HttpServlet {
                 gotoPage(targetURL, request, response);
             }
         }
+        else if ("post article".equals(action)) {
+        	ntustmodel.postArticle(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("post AD".equals(action)) {
+        	ntustmodel.toAD(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("post the AD".equals(action)) {
+        	ntustmodel.postAD(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
         else {
             response.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED);
         }

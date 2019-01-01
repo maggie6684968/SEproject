@@ -90,26 +90,25 @@ input[type="email"] {
 				</table>
 	<table style="width: 750px;">
 		<b><font size="6" face="微軟正黑體">我的家族</font></b>
+			<form method="post" action="main">
 				<tr>
 					<td width="40%" valign="bottom">
-							<form method="post" action="main">
 								<span style="float: right;">
-								<input type="button" value="發布文章" name="post article">
+								<input type="submit" value="post article" name="action">
 								</span>
-							</form>
 					</td>
 					<td width="60%" align="left" >
 						<textarea name="Content"  style="width:400px;height:100px;"
 							placeholder="發布動態"></textarea>
 					</td>
 				</tr>
+			</form>
 				<tr>
 					<td valign="bottom" colspan=2>
 							<form method="post" action="main">
 								<input type="button" value="軟骨小蛆" name="post article">
 								<input type="button" value="pokemon" name="post AD">
 								<input type="button" value="我想吃披薩" name="post AD">
-								<input type="button" value="將資料庫的看板名稱填進來" name="post AD">
 							</form>
 					</td>
 				</tr>
