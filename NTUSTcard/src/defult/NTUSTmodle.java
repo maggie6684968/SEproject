@@ -78,6 +78,10 @@ public class NTUSTmodle {
             throws IOException, ServletException {
     	view = "/Card.jsp";      
     }
+    public void toComment(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/Comment.jsp";      
+    }
     
     // 轉往登入畫面
     public void backToLogin(HttpServletRequest request, HttpServletResponse response)
