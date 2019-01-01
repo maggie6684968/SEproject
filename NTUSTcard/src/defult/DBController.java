@@ -10,9 +10,9 @@ public class DBController {
 
 	public DBController() {
 		try {
-			// Class ªºÀRºA forName() ¤èªk¹ê²{°ÊºA¥[¸üÃş§O
+			// Class çš„éœæ…‹ forName() æ–¹æ³•å¯¦ç¾å‹•æ…‹åŠ è¼‰é¡åˆ¥
 			Class.forName("com.mysql.jdbc.Driver");
-			// 3306|MySQL¶}©ñ¦¹ºİ¤f
+			// 3306|MySQLé–‹æ”¾æ­¤ç«¯å£
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntustsql?serverTimezone=UTC", "root", "1234");
 			st = con.createStatement();
 
@@ -49,7 +49,7 @@ public class DBController {
 		public void setUserData(UserInfoBean data) {
 			try {
 				
-				String SQL = "INSERT user " +
+				String SQL = "INSERT INTO user " +
 
 				"(id,password,mail,name,institute,depart,birthday,coin,hobby)" +
 
