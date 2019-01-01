@@ -38,7 +38,7 @@ input[type="password"] {
 
 </head>
 <body bgcolor="D9D9D9" style="height: 457px;">
-	<Form method="post" action="main">
+	<form method="post" action="main">
 		<!--<input type="hidden" name="action" value="authenticate">-->
 		<center>
 			<br> <br>

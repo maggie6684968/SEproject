@@ -60,6 +60,13 @@ public class ServletController extends HttpServlet {
                 gotoPage(targetURL, request, response);
             }
         }
+        else if ("Input".equals(action)) {//NewPassword page
+        	ntustmodel.backToLogin(request, response);
+        	String targetURL = ntustmodel.getView();
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
         else if ("Sign Up".equals(action)) {
         	ntustmodel.toSignUp(request, response);  
         	String targetURL = ntustmodel.getView();// ���o����e������ (view)
