@@ -1,11 +1,16 @@
 <%@ page contentType="text/html;charset=big5"%>
+<%@ page import="defult.NTUSTmodle"%>
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.PostDataBean"%>
 <%@ page import="defult.DBController"%>
+<%@ page import="defult.MySqlDBController"%>
+<%@ page import="defult.H2DBController"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
-<%	DBController dbc = new DBController();
+<%	
+	NTUSTmodle model = new NTUSTmodle();
+	DBController dbc = model.getDBController();
 	ArrayList<UserInfoBean> temp = dbc.getUserData();
 	ArrayList<PostDataBean> tmp = dbc.getPostData();
 	
@@ -62,9 +67,9 @@ input[type="submit"] {
 								<tr>
 									<td valign="middle" width="20%"style="border: 2px #7878FF solid;">
 										<!-- <img src="https://ppt.cc/fLreBx@.png"
-											border="1" alt="PPT.ccÁY¹ÏªA°È" title="PPT.ccÁY¹ÏªA°È"
+											border="1" alt="PPT.ccÃYÂ¹ÃÂªAÂ°Ãˆ" title="PPT.ccÃYÂ¹ÃÂªAÂ°Ãˆ"
 											style="width: 73px; height: 71px;"> -->
-										<font size="4" face="·L³n¥¿¶ÂÅé"><b>
+										<font size="4" face="Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©"><b>
 										<%
 										 	out.println(user.getUserName());
 										%>
@@ -74,15 +79,15 @@ input[type="submit"] {
 										if(post > post_count)
 										{
 											out.print("<td width='10%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).author + "</font></b></td>");
 					
 											out.print("<td width='50%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).content + "</font></b></td>");
 					
 											out.print("<td width='20%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).priority + "</font></b><br>");
 											out.print("<input type='button' value='heart");
 											out.print(tmp.get(post_count).heart+ "' name='Heart'>");
@@ -93,31 +98,31 @@ input[type="submit"] {
 								</tr>
 								<tr>
 									<td valign="middle" width="20%" rowspan=2 style="border: 2px #7878FF solid;">	
-										<font size="4" face="·L³n¥¿¶ÂÅé"><b>
+										<font size="4" face="Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©"><b>
 										<%
 											String birthday = user.getBirthday();
 											String mail = user.getMail();
 											String institute = user.getInstitute();
 											String depart = user.getDepart();
-											out.println("¥Í¤é : " + birthday + "<br>");
-											out.println("«H½c : " + mail + "<br>");
-											out.println("¾Ç°| : " + institute + "<br>");
-											out.println("¨t¯Å : " + depart + "<br>");
+											out.println("Â¥ÃÂ¤Ã© : " + birthday + "<br>");
+											out.println("Â«HÂ½c : " + mail + "<br>");
+											out.println("Â¾Ã‡Â°| : " + institute + "<br>");
+											out.println("Â¨tÂ¯Ã… : " + depart + "<br>");
 										%>
 										</b></font>
 									</td>
 									<% 	if(post_count < post){
 										
 											out.print("<td width='10%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).author + "</font></b></td>");
 					
 											out.print("<td width='50%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).content + "</font></b></td>");
 					
 											out.print("<td width='20%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).priority + "</font></b><br>");
 											out.print("<input type='button' value='heart");
 											out.print(tmp.get(post_count).heart+ "' name='Heart'>");
@@ -130,15 +135,15 @@ input[type="submit"] {
 										<%	if(post_count < post){
 											
 											out.print("<td width='10%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).author + "</font></b></td>");
 					
 											out.print("<td width='50%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).content + "</font></b></td>");
 					
 											out.print("<td width='20%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).priority + "</font></b><br>");
 											out.print("<input type='button' value='heart");
 											out.print(tmp.get(post_count).heart+ "' name='Heart'>");
@@ -154,15 +159,15 @@ input[type="submit"] {
 											out.print("</td>");
 											
 											out.print("<td width='10%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).author + "</font></b></td>");
 					
 											out.print("<td width='50%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).content + "</font></b></td>");
 					
 											out.print("<td width='20%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='Â·LÂ³nÂ¥Â¿Â¶Ã‚Ã…Ã©'>");
 											out.print(tmp.get(post_count).priority + "</font></b><br>");
 											out.print("<input type='button' value='heart");
 											out.print(tmp.get(post_count).heart+ "' name='Heart'>");
