@@ -4,15 +4,15 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DBController {
-	protected Connection con;
-	protected Statement st;
-	protected ResultSet rs;
+	private Connection con;
+	private Statement st;
+	private ResultSet rs;
 
 	public DBController() {
 		try {
-			// Class çš„éœæ…‹ forName() æ–¹æ³•å¯¦ç¾å‹•æ…‹åŠ è¼‰é¡åˆ¥
+			// Class ªºÀRºA forName() ¤èªk¹ê²{°ÊºA¥[¸üÃş§O
 			Class.forName("com.mysql.jdbc.Driver");
-			// 3306|MySQLé–‹æ”¾æ­¤ç«¯å£
+			// 3306|MySQL¶}©ñ¦¹ºİ¤f
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntustsql?serverTimezone=UTC", "root", "1234");
 			st = con.createStatement();
 
@@ -123,27 +123,36 @@ public class DBController {
 			}	
 			return result;
 		}
-	public void setPostData(PostDataBean data) {
-		try {
-			String SQL = "INSERT post " + "(id,author,board,priority,content,postTime,comments";
-
-			for(int i = 0; i < data.comments;i++) {
-				SQL += "," + "comment" + i ;
+		public void setPostData(PostDataBean data) {
+			try {
+				String SQL = "INSERT post " + "(id,author,board,priority,content,postTime,comments";
+				
+				for(int i = 0; i < data.comments;i++) {
+					SQL += "," + "comment" + Integer.toString(i);
+				}
+				
+				SQL += ") VALUES ('" + data.id + "','" + data.author + "','" + data.board + "','" + data.priority
+						 + "','" + data.content + "','" + data.postTime + "','" + data.comments; 
+         		
+         		for(int i = 0; i < data.comments;i++) {
+        			SQL += "','" + data.comment.get(i);
+        		}
+				
+         		SQL += "')";
+         		st.execute(SQL);
+				
+			} catch (Exception ex) {
+				System.out.println(ex);
 			}
-
-			SQL += ") VALUES ('" + data.id + "','" + data.author + "','" + data.board + "','" + data.priority
-					 + "','" + data.content + "','" + data.postTime + "','" + data.comments; 
-
-			for(int i = 0; i < data.comments;i++) {
-				SQL += "','" + data.comment.get(i);
-			}
-
-			SQL += "')";
-			st.execute(SQL);
-
-		} catch (Exception ex) {
-			System.out.println(ex);
 		}
-		}	
+		public void spendCoin(int coin, String ID) {
+			try{
+				String SQL = "UPDATE user SET coin ='" +
+					coin + "' WHERE id='" + ID + "'";
+			st.execute(SQL);
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}
 		
-}
+}	
