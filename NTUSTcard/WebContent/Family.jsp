@@ -2,11 +2,13 @@
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.PostDataBean"%>
 <%@ page import="defult.DBController"%>
+<%@ page import="defult.NTUSTmodle"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
 <%	
-	DBController dbc = new DBController();
+	NTUSTmodle model = new NTUSTmodle();
+	DBController dbc = model.getDBController();
 	ArrayList<PostDataBean> temp = dbc.getPostData();
 %>
 <html>
@@ -89,7 +91,7 @@ input[type="email"] {
 					</tr>
 				</table>
 	<table style="width: 750px;">
-		<b><font size="6" face="·L³n¥¿¶ÂÅé">§Úªº®a±Ú</font></b>
+		<b><font size="6" face="å¾®è»Ÿæ­£é»‘é«”">æˆ‘çš„å®¶æ—</font></b>
 			<form method="post" action="main">
 				<tr>
 					<td width="40%" valign="bottom">
@@ -99,16 +101,16 @@ input[type="email"] {
 					</td>
 					<td width="60%" align="left" >
 						<textarea name="Content"  style="width:400px;height:100px;"
-							placeholder="µo¥¬°ÊºA"></textarea>
+							placeholder="ç™¼å¸ƒå‹•æ…‹"></textarea>
 					</td>
 				</tr>
 			</form>
 				<tr>
 					<td valign="bottom" colspan=2>
 							<form method="post" action="main">
-								<input type="button" value="³n°©¤p³I" name="post article">
+								<input type="button" value="è»Ÿéª¨å°è›†" name="post article">
 								<input type="button" value="pokemon" name="post AD">
-								<input type="button" value="§Ú·Q¦Y©ÜÂÄ" name="post AD">
+								<input type="button" value="æˆ‘æƒ³åƒæŠ«è–©" name="post AD">
 							</form>
 					</td>
 				</tr>
@@ -118,15 +120,15 @@ input[type="email"] {
 				for (int i = 0; i < temp.size(); i++) {
 					out.println("<tr>");
 					out.print("<td width='20%' align='left'>");
-					out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+					out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 					out.print(temp.get(i).author + "</font></b></td>");
 					
 					out.print("<td width='60%' align='left'>");
-					out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+					out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 					out.print(temp.get(i).content + "</font></b></td>");
 					
 					out.print("<td width='20%' align='left'>");
-					out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+					out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 					out.print(temp.get(i).priority + "</font></b><br>");
 					out.print("<input type='button' value='heart");
 					out.print(temp.get(i).heart+ "' name='Heart'>");
