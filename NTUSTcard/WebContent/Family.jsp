@@ -66,23 +66,23 @@ input[type="email"] {
 </head>
 <body bgcolor="#FFFAF2">
 	<table style="width: 750px;">
-	<tr>
+					<tr>
 						<td>
 							<form method="post" action="main">
-								<span style="float: left;"> <input type="button"
-									value="抽卡" name="GetCardButton"> <input type="button"
-									value="個人資料" name="Profile"> <input type="button"
-									value="隱私設定" name="Secrecy">
+								<span style="float: left;">
+									<input type="submit" value="Card" name="action">
+									<input type="submit" value="Profile Setting" name="action">
+									<input type="submit" value="Secrecy Setting" name="action">
 								</span>
 							</form>
 						</td>
 						<td>
 							<form method="post" action="main">
-								<span style="float: right;"> <input type="button"
-									value="首頁" name="HomePage"> <input type="button"
-									value="布告欄" name="Board"> <input type="button"
-									value="家族頁" name="Family"><input type="hidden" name="action" value="logout">
-									 <input type="submit" value="登出" name="logoutButton">
+								<span style="float: right;">
+									<input type="submit" value="Home Page" name="action">
+									<input type="submit" value="Board" name="action">
+									<input type="submit" value="Family" name="action">
+									<input type="submit" value="logout" name="action">
 								</span>
 							</form>
 						</td>
@@ -114,7 +114,7 @@ input[type="email"] {
 					</td>
 				</tr>
 		</table>
-		<table border=1 style="width: 750px;">
+		<table style="width: 750px;">
 			<%				
 				for (int i = 0; i < temp.size(); i++) {
 					out.println("<tr>");

@@ -1,13 +1,10 @@
-<%@ page contentType="text/html;charset=big5"%>
+<%@ page language="java" contentType="text/html;charset=big5"%>
 <%@ page import="defult.UserInfoBean"%>
-<%@ page import="defult.PostDataBean"%>
 <%@ page import="defult.DBController"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
-<jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
 <%	DBController dbc = new DBController();
 	ArrayList<UserInfoBean> temp = dbc.getUserData();
-	ArrayList<PostDataBean> tmp = dbc.getPostData();
 %>
 
 <html>
@@ -66,30 +63,31 @@ input[type="email"] {
 </head>
 <body bgcolor="#FFFAF2">
 	<table align="center" style="width: 1000px;">
-			<b><font size="6" face="å¾®è»Ÿæ­£é»‘é«”">Privacy Settings</font></b>
+			<b><font size="6" face="·L³n¥¿¶ÂÅé">Privacy Settings</font></b>
 			<table style="border: 2px #7878FF solid; width: 900px"
 					cellpadding="10" border='0' BGCOLOR=#FFFAF2>
+			<form method="post" action="main">
 				<tr>
 					<td width="10%" align="left" >
 					</td>
 					<td width="40%" align="left" >
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Modify your password:</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Modify your password:</font></b>
 					</td>
 					<td width="50%" align="left" >
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Modify your e-mail address:</font></b>	
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Modify your e-mail address:</font></b>	
 					</td>		
 				</tr>	
 				<tr>
 					<td width="10%" align="left" >
 					</td>
 					<td width="40%" align="left" >
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Old password:</font></b>
-						<input type="password" name="password" BGCOLOR="#F5F5F5"
-									HTML_CTL="Text" maxLength="10" size="15" placeholder="å¡«å…¥6-20ä½è‹±æ–‡å­—æ¯æˆ–æ•¸å­—"
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Old password:</font></b>
+						<input type="password" name="oldPassword" BGCOLOR="#F5F5F5"
+									HTML_CTL="Text" maxLength="10" size="15" placeholder="¶ñ¤J6-20¦ì­^¤å¦r¥À©Î¼Æ¦r"
 									style="width: 175px;">
 					</td>
 					<td width="50%" align="left" >
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Old e-mail:</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Old e-mail:</font></b>
 						<%
  							UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
  							String mail = user.getMail();
@@ -101,14 +99,14 @@ input[type="email"] {
 					<td width="10%" align="left" >
 					</td>
 					<td width="40%" align="left" >
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Enter new password:</font></b>
-						<input type="password" name="password" BGCOLOR="#F5F5F5"
-									HTML_CTL="Text" maxLength="10" size="15" placeholder="å¡«å…¥6-20ä½è‹±æ–‡å­—æ¯æˆ–æ•¸å­—"
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Enter new password:</font></b>
+						<input type="password" name="newPassword" BGCOLOR="#F5F5F5"
+									HTML_CTL="Text" maxLength="10" size="15" placeholder="¶ñ¤J6-20¦ì­^¤å¦r¥À©Î¼Æ¦r"
 									style="width: 175px;">
 					</td>
 					<td width="50%" align="left" >
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Enter new e-mail:</font></b>	
-						<input type="email" name="email"placeholder="XXX@gmail.comã€XXX@yahoo.com.tw">
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Enter new e-mail:</font></b>	
+						<input type="email" name="email"placeholder="XXX@gmail.com¡BXXX@yahoo.com.tw">
 					</td>		
 				</tr>
 				
@@ -116,9 +114,9 @@ input[type="email"] {
 					<td width="10%" align="left" >
 					</td>
 					<td width="40%" align="left" >
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Verify new password:</font></b>
-						<input type="password" name="password" BGCOLOR="#F5F5F5"
-									HTML_CTL="Text" maxLength="10" size="15" placeholder="å¡«å…¥6-20ä½è‹±æ–‡å­—æ¯æˆ–æ•¸å­—"
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Verify new password:</font></b>
+						<input type="password" name="verifyPassword" BGCOLOR="#F5F5F5"
+									HTML_CTL="Text" maxLength="10" size="15" placeholder="¶ñ¤J6-20¦ì­^¤å¦r¥À©Î¼Æ¦r"
 									style="width: 175px;">
 					</td>
 					<td width="50%" align="left" >
@@ -127,14 +125,14 @@ input[type="email"] {
 				</tr>
 				<tr>
 					<td width="10%" align="center" colspan=3>
-						<input type=submit value="Cancel">
+						<input type=submit value="Cancel" name="action">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<input type=submit value="UpdatePrivacyData">
+						<input type=submit value="UpdatePrivacyData" name="action">
+						
 					</td>
 					
 				</tr>		
-			</table>
-		</center>
-	</Form>
+			</form>
+		</table>
 </body>
 </html>

@@ -5,8 +5,10 @@
 </head>
 <body>
 <p>±K½X¿ù»~¡I</p>
-<p>
-<% out.println("<a href=\"" + request.getContextPath() + "/main\">­«·s¿é¤J</a>"); %>
-</p>
+
+<Form method="post" action="main">
+<input type=submit name="action" value="Back">
+</Form>
+
 </body>
 </html>

@@ -4,9 +4,9 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class DBController {
-	private Connection con;
-	private Statement st;
-	private ResultSet rs;
+	protected Connection con;
+	protected Statement st;
+	protected ResultSet rs;
 
 	public DBController() {
 		try {
@@ -15,7 +15,7 @@ public class DBController {
 			// 3306|MySQL開放此端口
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntustsql?serverTimezone=UTC", "root", "1234");
 			st = con.createStatement();
-
+			
 		} catch (Exception ex) {
 			System.out.println("Error: " + ex);
 		}
@@ -36,6 +36,8 @@ public class DBController {
 				data.institute = rs.getString("institute");
 				data.depart = rs.getString("depart");
 				data.birthday = rs.getString("birthday");
+				data.coin = rs.getInt("coin");
+				data.hobby = rs.getString("hobby");
 				result.add(data);
 			}
 			return result;
@@ -44,31 +46,81 @@ public class DBController {
 		}
 		return result;
 	}
-		public ArrayList<PostDataBean> getPostData() {
-			ArrayList<PostDataBean> result = new ArrayList<PostDataBean>();
-			try {
-				String query = "select * from post";
-				rs = st.executeQuery(query);
-				System.out.println("Records for Database");
-				while (rs.next()) {
-					PostDataBean data = new PostDataBean();
-					data.id = rs.getInt("id");
-					data.author = rs.getString("author");
-					data.board = rs.getString("board");
-					data.priority = rs.getInt("priority");
-					data.content = rs.getString("content");
-					data.postTime = rs.getString("postTime");
-					data.heart = rs.getInt("heart");					
-					data.comments = rs.getInt("comments");
-					for(int i=0; i < data.comments;i++)
-					{
-						data.postComment(rs.getString("comment" +Integer.toString(i)));
-					}
-					result.add(data);
-				}
-			} catch (Exception ex) {
-				System.out.println(ex);
-			}	
-			return result;
+	public void setUserData(UserInfoBean data) {
+		try {
+			
+			String SQL = "INSERT INTO user " +
+
+			"(id,password,mail,name,institute,depart,birthday,coin,hobby)" +
+
+     		" VALUES ('" + data.id + "','" + data.password + "','" + data.mail + "','" + data.name + "','"
+     					 + data.institute + "','" + data.depart + "','" + data.birthday
+     					 + "','" + data.coin + "','" + data.hobby + "')";
+     		st.execute(SQL);
+			
+		} catch (Exception ex) {
+			System.out.println(ex);
 		}
-}	
+	}
+	public void modifyProfileData(String ID, String depart,String institute, String hobby) {
+		try {
+			
+			String SQL = "UPDATE user SET institute ='" +
+					institute + "', depart ='" + depart + "', hobby ='"
+					+ hobby + "' WHERE id='" + ID + "'";
+			st.execute(SQL);
+			
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+	public void modifySecrecyData(String ID,String newPassword,String mail) {
+		try {
+			String SQL="";
+			if((!newPassword.equals(""))&&(!mail.equals(""))) {
+				SQL = "UPDATE user SET password ='" +
+						newPassword + "', mail ='" + mail + "' WHERE id='" + ID + "'";
+				
+			} else if((!newPassword.equals(""))&&(mail.equals(""))) {
+				SQL = "UPDATE user SET password ='" +
+						newPassword + "' WHERE id='" + ID + "'";
+				
+			} else if((newPassword.equals(""))&&(!mail.equals(""))) {
+				SQL = "UPDATE user SET mail ='" +
+						mail + "' WHERE id='" + ID + "'";
+				
+			}else return;
+			st.execute(SQL);
+			
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}
+	}
+	public ArrayList<PostDataBean> getPostData() {
+		ArrayList<PostDataBean> result = new ArrayList<PostDataBean>();
+		try {
+			String query = "select * from post";
+			rs = st.executeQuery(query);
+			System.out.println("Records for Database");
+			while (rs.next()) {
+				PostDataBean data = new PostDataBean();
+				data.id = rs.getInt("id");
+				data.author = rs.getString("author");
+				data.board = rs.getString("board");
+				data.priority = rs.getInt("priority");
+				data.content = rs.getString("content");
+				data.postTime = rs.getString("postTime");
+				data.heart = rs.getInt("heart");					
+				data.comments = rs.getInt("comments");
+				for(int i=0; i < data.comments;i++)
+				{
+					data.postComment(rs.getString("comment" +Integer.toString(i)));
+				}
+				result.add(data);
+			}
+		} catch (Exception ex) {
+			System.out.println(ex);
+		}	
+		return result;
+	}
+}

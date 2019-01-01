@@ -15,7 +15,7 @@ import javax.servlet.http.*;
 				@WebInitParam(name = "defultPara", value = "this is defult parameter")
 		})
 public class ServletController extends HttpServlet {
-	protected NTUSTmodle ntustmodel=new NTUSTmodle();
+	protected NTUSTmodle ntustmodel = new NTUSTmodle();
     public void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -26,13 +26,18 @@ public class ServletController extends HttpServlet {
         request.setCharacterEncoding("big5");
 
         String action = request.getParameter("action"); // 取得目前使用者要執行的動作
-
-        // 若使用者身分尚未驗證，且目前的"動作"不是要進行驗證，就切到登入畫面
-        if (!isAuthenticated(request) && !("authenticate".equals(action))) {
-            doLogin(request, response);
-            return;
+        
+        if(action==null){
+        	gotoPage("/Login.jsp", request, response);
         }
-        if ("authenticate".equals(action)) {
+        
+        System.out.println(action);
+        // 若使用者身分尚未驗證，且目前的"動作"不是要進行驗證，就切到登入畫面
+        //if (!isAuthenticated(request) && !("login".equals(action))) {//"authenticate"->"login"
+        //    doLogin(request, response);
+        //    return;
+        //}
+        if ("login".equals(action)) {//"authenticate"->"login"
         	ntustmodel.doAuthenticate(request, response);  // 執行身分驗證
             String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
             if ((targetURL != null) && (targetURL != "")) {
@@ -40,11 +45,100 @@ public class ServletController extends HttpServlet {
             }
         }
         else if ("logout".equals(action)) {
-            doLogout(request, response);        // 執行登出
+        	ntustmodel.doLogout(request, response);        // 執行登出
+        	String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Back".equals(action)) {//login error page中按下back建回到login頁面
+        	ntustmodel.backToLogin(request, response);
+        	String targetURL = ntustmodel.getView();
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Sign Up".equals(action)) {
+        	ntustmodel.toSignUp(request, response);  
+        	String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("signUp".equals(action)) {
+        	ntustmodel.doSignUp(request, response);  // 進行註冊
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Family".equals(action)) {
+        	ntustmodel.toFamily(request, response); 
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Board".equals(action)) {
+        	ntustmodel.toBoard(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Home Page".equals(action)) {
+        	ntustmodel.toHome(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Secrecy Setting".equals(action)) {
+        	ntustmodel.toSecrecy(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Profile Setting".equals(action)) {
+        	ntustmodel.toProfile(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Card".equals(action)) {
+        	ntustmodel.toCard(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Cancel".equals(action)) {
+        	ntustmodel.toHome(request, response); 
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("UpdateProfile".equals(action)) {
+        	ntustmodel.updateProfile(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("UpdatePrivacyData".equals(action)) {
+        	ntustmodel.updatePrivacyData(request, response); 
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
         }
         else {
             response.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED);
         }
+        
     }
 
     // 轉往指定的網址
@@ -65,20 +159,4 @@ public class ServletController extends HttpServlet {
             result = true;
         return result;
     }
-
-    // 轉往登入畫面
-    private void doLogin(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        gotoPage("Login.jsp", request, response);
-    }
-
-    // 登出
-    private void doLogout(HttpServletRequest request, HttpServletResponse response)
-            throws IOException, ServletException {
-        HttpSession session = request.getSession();
-        session.removeAttribute("userInfo");   // 把身分驗證旗號清掉
-        session.invalidate(); // 清除 session 內所有 attributes 與物件的繫結關係
-        doLogin(request, response);             // 再轉往登入畫面
-    }
-
 }
