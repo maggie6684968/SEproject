@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html;charset=big5"%>
+﻿<%@ page language="java" contentType="text/html;charset=big5"%>
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.DBController"%>
 <%@ page import="java.util.ArrayList"%>

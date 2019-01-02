@@ -2,11 +2,13 @@
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.PostDataBean"%>
 <%@ page import="defult.DBController"%>
+<%@ page import="defult.NTUSTmodle"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
 <%	
-	DBController dbc = new DBController();
+	NTUSTmodle model = new NTUSTmodle();
+	DBController dbc = model.getDBController();
 	int id = Integer.parseInt(request.getParameter("articleID"));
 	ArrayList<String> temp = dbc.getCommentData(id);
 %>

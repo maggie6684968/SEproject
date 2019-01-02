@@ -68,7 +68,7 @@ input[type="text"] {
 					</tr>
 				</table>
 	<table align="center" style="width: 1000px;">
-			<b><font size="6" face="å¾®è»Ÿæ­£é»‘é«”">Profile</font></b>
+			<b><font size="6" face="·L³n¥¿¶ÂÅé">Profile</font></b>
 				
 	<table style="border: 2px #7878FF solid; width: 900px"
 					cellpadding="10" border='0' BGCOLOR=#FFFAF2>
@@ -76,7 +76,7 @@ input[type="text"] {
 						
 				<tr>
 					<td width="30%" align="left">				
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Your name:	</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Your name:	</font></b>
 						<%
  							UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
  							String name = user.getName();
@@ -84,7 +84,7 @@ input[type="text"] {
  						%>
 					</td>
 					<td width="40%" align="left" rowspan=4>
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Your interest or hobby:	</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Your interest or hobby:	</font></b>
 						<br>
 						<textarea name="hobby" style="width:250px;height:300px;" width="50%" height="50%"><%out.println(user.getHobby());%></textarea>	
 						
@@ -95,50 +95,50 @@ input[type="text"] {
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
-							<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Gender:	</font></b>
+							<b><font size="2" face="·L³n¥¿¶ÂÅé">Gender:	</font></b>
 							MALE
 					</td>		
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Birthday:	</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Birthday:	</font></b>
 						<%
  							String birthday = user.getBirthday();
  							out.println(birthday);
  						%>
 					</td>		
 					<td width="40%" align="left">
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">update your new profile photo:	</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">update your new profile photo:	</font></b>
 						<input type="file" name="photo">	
 					</td>
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
-							<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Institute:		</font></b>
+							<b><font size="2" face="·L³n¥¿¶ÂÅé">Institute:		</font></b>
 							<select name="institute">
-ã€€							<option value="CSIE" selected>é›»è³‡å­¸é™¢</option>
-							<option value="ECO">è²¡ç¶“å­¸é™¢</option>
+¡@							<option value="CSIE" selected>¹q¸ê¾Ç°|</option>
+							<option value="ECO">°]¸g¾Ç°|</option>
 							</select>
 						
 					</td>		
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Department:		</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Department:		</font></b>
 							<select name="depart">
-ã€€							<option value="CSIE" selected>è³‡è¨Šå·¥ç¨‹ç³»</option>
-							<option value="ECE">é›»å­å·¥ç¨‹ç³»</option>
-							<option value="EE">é›»æ©Ÿå·¥ç¨‹ç³»</option>
-							<option value="ECO">ç¶“æ¿Ÿç³»</option>
+¡@							<option value="CSIE" selected>¸ê°T¤uµ{¨t</option>
+							<option value="ECE">¹q¤l¤uµ{¨t</option>
+							<option value="EE">¹q¾÷¤uµ{¨t</option>
+							<option value="ECO">¸gÀÙ¨t</option>
 							</select>
 						
 					</td>		
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">Grade:	</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">Grade:	</font></b>
 						<select name="Grade">
-ã€€							<option value="1">freshman</option>
+¡@							<option value="1">freshman</option>
 							<option value="2">sophomore</option>
 							<option value="3" selected>junior</option>
 							<option value="4">senior</option>

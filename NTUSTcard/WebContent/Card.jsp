@@ -89,19 +89,19 @@ input[type="email"] {
 					</tr>
 				</table>
 	<table style="width: 750px;">
-		<b><font size="6" face="å¾®è»Ÿæ­£é»‘é«”">å°ç§‘å¡</font></b>
+		<b><font size="6" face="·L³n¥¿¶ÂÅé">¥x¬ì¥d</font></b>
 				<tr>
 					<td width="60%" valign="bottom"><br><br>
 							<form method="post" action="main">
-								<input type="submit" value="æŠ½å¡" name="doro">
+								<input type="submit" value="©â¥d" name="doro">
 							</form><br><br>
 					</td>
 					<td width="40%" align="center" rowspan=2>
 						<img src="https://ppt.cc/fLreBx@.png"
-										border="1" alt="PPT.ccç¸®åœ–æœå‹™" title="PPT.ccç¸®åœ–æœå‹™"
+										border="1" alt="PPT.ccÁY¹ÏªA°È" title="PPT.ccÁY¹ÏªA°È"
 										style="width: 73px; height: 71px;">
 						<br>				
-						<font size="6" face="å¾®è»Ÿæ­£é»‘é«”">
+						<font size="6" face="·L³n¥¿¶ÂÅé">
 						<b><%
  							UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
  							String name = user.getName();
@@ -109,7 +109,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br><br>				
-						<font size="3" face="å¾®è»Ÿæ­£é»‘é«”">
+						<font size="3" face="·L³n¥¿¶ÂÅé">
 						<b>
 							Gender:	male
 						</b>
@@ -118,7 +118,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="å¾®è»Ÿæ­£é»‘é«”">
+						<font size="3" face="·L³n¥¿¶ÂÅé">
 						<b>
 							birthday:	
 						</b>
@@ -128,7 +128,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="å¾®è»Ÿæ­£é»‘é«”">
+						<font size="3" face="·L³n¥¿¶ÂÅé">
 						<b>
 							Institute:	
 						</b>
@@ -138,7 +138,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="å¾®è»Ÿæ­£é»‘é«”">
+						<font size="3" face="·L³n¥¿¶ÂÅé">
 						<b>
 							Depart:	
 						</b>
@@ -148,7 +148,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="å¾®è»Ÿæ­£é»‘é«”">
+						<font size="3" face="·L³n¥¿¶ÂÅé">
 						<b>hobby:</b><br>
 						<b><%
 							String hobby = user.getHobby();
@@ -160,7 +160,7 @@ input[type="email"] {
 				</tr>
 				<tr>
 					<td width="60%" align="left">
-						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">éš±è—å¡ç‰‡ä¸Šçš„message:</font></b>
+						<b><font size="2" face="·L³n¥¿¶ÂÅé">ÁôÂÃ¥d¤ù¤Wªºmessage:</font></b>
 						<br>
 						<input type="checkbox" name="hideInfo" value="gender">
 						<label for="gender">Gender</label><br>
