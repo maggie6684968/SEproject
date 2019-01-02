@@ -1,4 +1,4 @@
-﻿package defult;
+package defult;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebInitParam;
@@ -21,37 +21,46 @@ public class ServletController extends HttpServlet {
 
     	
     	
-        // 下面兩行讓中文字能正確顯示
+        // �U�����������r�ॿ�T���
         response.setContentType("text/html; charset=big5");
         request.setCharacterEncoding("big5");
 
-        String action = request.getParameter("action"); // 取得目前使用者要執行的動作
-        
-        if(action==null){
-        	gotoPage("/Login.jsp", request, response);
+        String action = request.getParameter("action"); // ���o�ثe�ϥΪ̭n���檺�ʧ@
+
+        // �Y�ϥΪ̨����|�����ҡA�B�ثe��"�ʧ@"���O�n�i�����ҡA�N����n�J�e��
+        if (!isAuthenticated(request) && !("login".equals(action))) {//"authenticate"->"login"
+            gotoPage("/Login.jsp", request, response);
+            return;
         }
-        
-        System.out.println(action);
-        // 若使用者身分尚未驗證，且目前的"動作"不是要進行驗證，就切到登入畫面
-        //if (!isAuthenticated(request) && !("login".equals(action))) {//"authenticate"->"login"
-        //    doLogin(request, response);
-        //    return;
-        //}
         if ("login".equals(action)) {//"authenticate"->"login"
-        	ntustmodel.doAuthenticate(request, response);  // 執行身分驗證
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+        	ntustmodel.doAuthenticate(request, response);  // ���樭������
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("logout".equals(action)) {
-        	ntustmodel.doLogout(request, response);        // 執行登出
-        	String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+        	ntustmodel.doLogout(request, response);        // ����n�X
+        	String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
-        else if ("Back".equals(action)) {//login error page中按下back建回到login頁面
+        else if ("Back".equals(action)) {//login error page�����Uback�ئ^��login����
+        	ntustmodel.backToLogin(request, response);
+        	String targetURL = ntustmodel.getView();
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Forget".equals(action)) {//NewPassword page
+        	ntustmodel.creatNewPW(request, response);
+        	String targetURL = ntustmodel.getView();
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("Input".equals(action)) {//NewPassword page
         	ntustmodel.backToLogin(request, response);
         	String targetURL = ntustmodel.getView();
             if ((targetURL != null) && (targetURL != "")) {
@@ -60,116 +69,89 @@ public class ServletController extends HttpServlet {
         }
         else if ("Sign Up".equals(action)) {
         	ntustmodel.toSignUp(request, response);  
-        	String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+        	String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("signUp".equals(action)) {
-        	ntustmodel.doSignUp(request, response);  // 進行註冊
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+        	ntustmodel.doSignUp(request, response);  // �i����U
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Family".equals(action)) {
         	ntustmodel.toFamily(request, response); 
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Board".equals(action)) {
         	ntustmodel.toBoard(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Home Page".equals(action)) {
         	ntustmodel.toHome(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Secrecy Setting".equals(action)) {
         	ntustmodel.toSecrecy(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Profile Setting".equals(action)) {
         	ntustmodel.toProfile(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Card".equals(action)) {
         	ntustmodel.toCard(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("Cancel".equals(action)) {
         	ntustmodel.toHome(request, response); 
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("UpdateProfile".equals(action)) {
         	ntustmodel.updateProfile(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
         else if ("UpdatePrivacyData".equals(action)) {
         	ntustmodel.updatePrivacyData(request, response); 
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            String targetURL = ntustmodel.getView();// ���o����e������ (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);
             }
         }
-        else if ("post article".equals(action)) {
-        	ntustmodel.postArticle(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
-            if ((targetURL != null) && (targetURL != "")) {
-                gotoPage(targetURL, request, response);
-            }
-        }
-        else if ("post AD".equals(action)) {
-        	ntustmodel.toAD(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
-            if ((targetURL != null) && (targetURL != "")) {
-                gotoPage(targetURL, request, response);
-            }
-        }
-        else if ("post the AD".equals(action)) {
-        	ntustmodel.postAD(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
-            if ((targetURL != null) && (targetURL != "")) {
-                gotoPage(targetURL, request, response);
-            }
-        }
-	else if ("Comment".equals(action)) {
-        	ntustmodel.toComment(request, response);  
-            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
-            if ((targetURL != null) && (targetURL != "")) {
-                gotoPage(targetURL, request, response);
-            }
-        }
+        
         else {
             response.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED);
         }
         
     }
 
-    // 轉往指定的網址
+    // �੹���w�����}
     private void gotoPage(String targetURL, HttpServletRequest request,
             HttpServletResponse response)
             throws IOException, ServletException {
@@ -178,8 +160,8 @@ public class ServletController extends HttpServlet {
         rd.forward(request, response);
     }
 
-    // 傳回目前的使用者是否已經通過身分驗證（是否已登入）
-    // 只要檢查 userInfo 物件是否存在就能得知是否已登入
+    // �Ǧ^�ثe���ϥΪ̬O�_�w�g�q�L�������ҡ]�O�_�w�n�J�^
+    // �u�n�ˬd userInfo ����O�_�s�b�N��o���O�_�w�n�J
     private boolean isAuthenticated(HttpServletRequest request) {
         boolean result = false;
         HttpSession session = request.getSession();
