@@ -170,5 +170,37 @@ public class DBController {
 			}	
 			return result;
 		}
+		public void setCommentData(int PostID, String content) {
+			try {
+				String query = "select * from post WHERE id = PostID";
+				String idUpdate = "Update user Set id= -1 Where id = PostID";
+				st.execute(idUpdate);
+				String delete = "Delete From post Where id = -1";
+				rs = st.executeQuery(query);				
+				int comments = rs.getInt("comments") + 1;
+
+				String SQL = "INSERT INTO post " + "(id,author,board,priority,content,postTime,comments";
+				
+				for(int i = 0; i < rs.getInt("comments");i++) {
+					SQL += "," + "comment" + Integer.toString(i);
+				}
+				
+				SQL += ") VALUES ('" + PostID + "','" + rs.getString("author") + "','" + rs.getString("board") + "','" + rs.getInt("priority")
+						 + "','" + rs.getString("content") + "','" + rs.getString("postTime") + "','" + comments; 
+         		
+         		for(int i = 0; i < rs.getInt("comments");i++) {
+        			SQL += "','" + rs.getString("comment" +Integer.toString(i));
+        		}
+				
+         		SQL += "','" + content;
+         		
+         		SQL += "')";
+         		st.execute(SQL);
+         		st.execute(delete);
+				
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}
 		
 }	
