@@ -1,6 +1,8 @@
-﻿package defult;
+package defult;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.text.SimpleDateFormat;
 
 public class PostDataBean {
 	public int id;
@@ -19,7 +21,10 @@ public class PostDataBean {
 		board = "";
 		priority = 0;
 		content = "";
-		postTime = "";
+		SimpleDateFormat sdFormat = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+		Date date = new Date();
+		String strDate = sdFormat.format(date);
+		postTime = strDate;
 		heart = 0;
 		comments = 0;
 		comment = new ArrayList<String>();
