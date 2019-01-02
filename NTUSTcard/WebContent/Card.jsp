@@ -9,7 +9,10 @@ DBController dbc = new DBController();
 ArrayList<UserInfoBean> temp = dbc.getUserData();
 Random rand = new Random();
 int randUser = rand.nextInt(temp.size());
-System.out.println(randUser);
+UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
+UserInfoBean randuser = temp.get(randUser);
+while (randuser.getName()==user.getName())
+	randuser = temp.get(rand.nextInt(temp.size()));
 %>
 <html>
 <head>
@@ -91,22 +94,21 @@ input[type="email"] {
 					</tr>
 				</table>
 	<table style="width: 750px;">
-		<b><font size="6" face="∑L≥n•ø∂¬≈È">•x¨Ï•d</font></b>
+		<b><font size="6" face="ÂæÆËªüÊ≠£ÈªëÈ´î">Âè∞ÁßëÂç°</font></b>
 				<tr>
 					<td width="40%" align="center" rowspan=2>
 						<img src="https://ppt.cc/fLreBx@.png"
-										border="1" alt="PPT.cc¡Yπœ™A∞»" title="PPT.cc¡Yπœ™A∞»"
+										border="1" alt="PPT.ccÁ∏ÆÂúñÊúçÂãô" title="PPT.ccÁ∏ÆÂúñÊúçÂãô"
 										style="width: 73px; height: 71px;">
 						<br>				
-						<font size="6" face="∑L≥n•ø∂¬≈È">
+						<font size="6" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b><%
-						UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
 							String name = user.getName();
 							out.println(name);
 						%></b>
 						</font>
 						<br><br><br>			
-						<font size="3" face="∑L≥n•ø∂¬≈È">
+						<font size="3" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b>
 							Birthday:	
 						</b>
@@ -116,7 +118,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="∑L≥n•ø∂¬≈È">
+						<font size="3" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b>
 							Institute:	
 						</b>
@@ -126,7 +128,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="∑L≥n•ø∂¬≈È">
+						<font size="3" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b>
 							Depart:	
 						</b>
@@ -136,7 +138,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="∑L≥n•ø∂¬≈È">
+						<font size="3" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b>Hobby:</b><br>
 						<b><%
 							String hobby1 = user.getHobby();
@@ -149,18 +151,17 @@ input[type="email"] {
 				<tr>
 					<td width="40%" align="center" rowspan=2>
 						<img src="https://ppt.cc/fLreBx@.png"
-										border="1" alt="PPT.cc¡Yπœ™A∞»" title="PPT.cc¡Yπœ™A∞»"
+										border="1" alt="PPT.ccÁ∏ÆÂúñÊúçÂãô" title="PPT.ccÁ∏ÆÂúñÊúçÂãô"
 										style="width: 73px; height: 71px;">
 						<br>				
-						<font size="6" face="∑L≥n•ø∂¬≈È">
+						<font size="6" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b><%
- 							UserInfoBean randuser = temp.get(randUser);
  							String UserName2 = randuser.getName();
  							out.println(UserName2);
 						%></b>
 						</font>
 						<br><br><br>			
-						<font size="3" face="∑L≥n•ø∂¬≈È">
+						<font size="3" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b>
 							Birthday:	
 						</b>
@@ -170,7 +171,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="∑L≥n•ø∂¬≈È">
+						<font size="3" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b>
 							Institute:	
 						</b>
@@ -180,7 +181,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="∑L≥n•ø∂¬≈È">
+						<font size="3" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b>
 							Depart:	
 						</b>
@@ -190,7 +191,7 @@ input[type="email"] {
 						%></b>
 						</font>
 						<br><br>				
-						<font size="3" face="∑L≥n•ø∂¬≈È">
+						<font size="3" face="ÂæÆËªüÊ≠£ÈªëÈ´î">
 						<b>Hobby:</b><br>
 						<b><%
 							String hobby2 = randuser.getHobby();
