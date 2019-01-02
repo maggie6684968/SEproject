@@ -2,15 +2,15 @@
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.PostDataBean"%>
 <%@ page import="defult.DBController"%>
-<%@ page import="defult.NTUSTmodle"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
 <%	
-	NTUSTmodle model = new NTUSTmodle();
-	DBController dbc = model.getDBController();
+	DBController dbc = new DBController();
 	int id = Integer.parseInt(request.getParameter("articleID"));
-	ArrayList<String> temp = dbc.getCommentData(id);
+	String output = request.getParameter("output");
+	ArrayList<String> tmp = dbc.getCommentData(id);
+	ArrayList<PostDataBean> temp = dbc.getPostData();
 %>
 <html>
 <head>
@@ -92,17 +92,17 @@ input[type="email"] {
 					</tr>
 	</table>
 	<table style="width: 750px;">
-		<b><font size="5" face="·L³n¥¿¶ÂÅé">¤º®e</font></b>
+		<b><font size="5" face="å¾®è»Ÿæ­£é»‘é«”">å…§å®¹</font></b>
 				<tr>					
 					<td width="100%" align="middle" bgcolor="#eeeeee" >
-					<b><font size='2' face='·L³n¥¿¶ÂÅé'><%=temp.get(i)%></font></b>
+					<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'><%=output%></font></b>
 						
 					</td>
 				</tr>
 				<tr>
 					<td valign="bottom" colspan=2>
 							<form method="post" action="main">
-								<input type="button" value="¦^¨ì¬ÝªO" name="post article">
+								<input type="button" value="å›žåˆ°çœ‹æ¿" name="post article">
 							</form>
 					</td>
 				</tr>
@@ -112,11 +112,11 @@ input[type="email"] {
 				for (int i = 0; i < temp.size(); i++) {
 					out.println("<tr>");
 					out.print("<td width='20%' align='left'>");
-					out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+					out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 					out.print(i + "</font></b></td>");
 					
 					out.print("<td width='80%' align='left'>");
-					out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+					out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 					out.print(temp.get(i) + "</font></b></td>");				
 
 				}
