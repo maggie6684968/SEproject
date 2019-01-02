@@ -210,7 +210,7 @@ public class NTUSTmodle {
 		
 		DBController dbc = new DBController();
 		dbc.setPostData(bean);
-		view = "/Welcome.jsp";
+		view = "/Board.jsp";
 	}
 	public void postAD(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
