@@ -141,6 +141,9 @@ public class DBController {
          		SQL += "')";
          		st.execute(SQL);
 				
+			} catch (SQLIntegrityConstraintViolationException e) {
+				data.id++;
+				setPostData(data);
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}
