@@ -1,18 +1,18 @@
-package defult;
+﻿package defult;
 
 import java.sql.*;
 import java.util.ArrayList;
 
 public class DBController {
-	private Connection con;
-	private Statement st;
-	private ResultSet rs;
+	protected Connection con;
+	protected Statement st;
+	protected ResultSet rs;
 
 	public DBController() {
 		try {
-			// Class ���R�A forName() ��k��{�ʺA�[�����O
+			// Class 的靜態 forName() 方法實現動態加載類別
 			Class.forName("com.mysql.jdbc.Driver");
-			// 3306|MySQL�}�񦹺ݤf
+			// 3306|MySQL開放此端口
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntustsql?serverTimezone=UTC", "root", "B10515027");
 			st = con.createStatement();
 
@@ -38,7 +38,6 @@ public class DBController {
 					data.birthday = rs.getString("birthday");
 					data.coin = rs.getInt("coin");
 					data.hobby = rs.getString("hobby");
-					
 					result.add(data);
 				}
 				return result;
@@ -50,7 +49,7 @@ public class DBController {
 		public void setUserData(UserInfoBean data) {
 			try {
 				
-				String SQL = "INSERT user " +
+				String SQL = "INSERT INTO user " +
 
 				"(id,password,mail,name,institute,depart,birthday,coin,hobby)" +
 
@@ -66,21 +65,31 @@ public class DBController {
 		public void modifyProfileData(String ID, String depart,String institute, String hobby) {
 			try {
 				
-				String SQL = "UPDATE user SET institute = " +
-						institute + ", depart = " + depart+", hobby = "
-						+ hobby + " WHERE id= " + ID + ";";
+				String SQL = "UPDATE user SET institute ='" +
+						institute + "', depart ='" + depart + "', hobby ='"
+						+ hobby + "' WHERE id='" + ID + "'";
 				st.execute(SQL);
 				
 			} catch (Exception ex) {
 				System.out.println(ex);
 			}
 		}
-		public void modifyPrivacyDataData(UserInfoBean data) {
+		public void modifySecrecyData(String ID,String newPassword,String mail) {
 			try {
-				
-				String SQL = "UPDATE user SET institute = " +
-						data.institute + ", depart = " + data.depart+", hobby = "
-						+ data.hobby + " WHERE id= " + data.id + ";";
+				String SQL="";
+				if((!newPassword.equals(""))&&(!mail.equals(""))) {
+					SQL = "UPDATE user SET password ='" +
+							newPassword + "', mail ='" + mail + "' WHERE id='" + ID + "'";
+					
+				} else if((!newPassword.equals(""))&&(mail.equals(""))) {
+					SQL = "UPDATE user SET password ='" +
+							newPassword + "' WHERE id='" + ID + "'";
+					
+				} else if((newPassword.equals(""))&&(!mail.equals(""))) {
+					SQL = "UPDATE user SET mail ='" +
+							mail + "' WHERE id='" + ID + "'";
+					
+				}else return;
 				st.execute(SQL);
 				
 			} catch (Exception ex) {
@@ -114,6 +123,52 @@ public class DBController {
 			}	
 			return result;
 		}
-		
+		public void setPostData(PostDataBean data) {
+			try {
+				String SQL = "INSERT INTO post " + "(id,author,board,priority,content,postTime,comments";
+				
+				for(int i = 0; i < data.comments;i++) {
+					SQL += "," + "comment" + Integer.toString(i);
+				}
+				
+				SQL += ") VALUES ('" + data.id + "','" + data.author + "','" + data.board + "','" + data.priority
+						 + "','" + data.content + "','" + data.postTime + "','" + data.comments; 
+         		
+         		for(int i = 0; i < data.comments;i++) {
+        			SQL += "','" + data.comment.get(i);
+        		}
+				
+         		SQL += "')";
+         		st.execute(SQL);
+				
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}
+		public void spendCoin(int coin, String ID) {
+			try{
+				String SQL = "UPDATE user SET coin ='" +
+					coin + "' WHERE id='" + ID + "'";
+			st.execute(SQL);
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}
+		}
+		public ArrayList<String> getCommentData(int PostID) {
+			ArrayList<String> result = new ArrayList<String>();
+			try {
+				String query = "select comments from post WHERE id = PostID";
+				rs = st.executeQuery(query);
+				System.out.println("Records for Database");
+				int comments = rs.getInt("comments");
+				for(int i=0; i < comments;i++)
+				{
+					result.add(rs.getString("comment" +Integer.toString(i)));
+				}
+			} catch (Exception ex) {
+				System.out.println(ex);
+			}	
+			return result;
+		}
 		
 }	

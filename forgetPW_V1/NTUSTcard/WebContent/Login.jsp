@@ -57,8 +57,8 @@ input[type="password"] {
 							</p>
 							<p align="center">
 								<input type="password" name="password" BGCOLOR="#F5F5F5"
-									HTML_CTL="Text" maxLength="10" size="15" placeholder="password"
-									style="width: 175px;">
+									HTML_CTL="Text" maxLength="10" size="15"
+									placeholder="password" style="width: 175px;">
 							</p>
 							<p align="center">
 								<!-- <input type=submit value="login"> -->
