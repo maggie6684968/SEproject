@@ -91,7 +91,7 @@ input[type="email"] {
 					</tr>
 	</table>
 	<table style="width: 750px;">
-		<b><font size="6" face="·L³n¥¿¶ÂÅé">¥¬§iÄæ</font></b>
+		<b><font size="6" face="å¾®è»Ÿæ­£é»‘é«”">å¸ƒå‘Šæ¬„</font></b>
 				<form method="post" action="main">
 					<tr>
 					<td width="40%" valign="bottom">
@@ -103,18 +103,18 @@ input[type="email"] {
 					</td>
 					<td width="60%" align="left" >
 						<textarea name="Content" style="width:400px;height:100px;"
-							placeholder="µo¥¬°ÊºA"></textarea>
+							placeholder="ç™¼å¸ƒå‹•æ…‹"></textarea>
 					</td>
 					</tr>
 				</form>
 				<tr>
 					<td valign="bottom" colspan=2>
 							<form method="post" action="main">
-								<input type="button" value="©Ò¦³¯Z¯Å¬ÝªO" name="post article">
-								<input type="button" value="¥|¸ê¤u¤@" name="post AD">
-								<input type="button" value="¥|¸ê¤u¤G" name="post AD">
-								<input type="button" value="¥|¸ê¤u¤T" name="post AD">
-								<input type="button" value="¥|¸ê¤u¥|" name="post AD">
+								<input type="button" value="æ‰€æœ‰ç­ç´šçœ‹æ¿" name="post article">
+								<input type="button" value="å››è³‡å·¥ä¸€" name="post AD">
+								<input type="button" value="å››è³‡å·¥äºŒ" name="post AD">
+								<input type="button" value="å››è³‡å·¥ä¸‰" name="post AD">
+								<input type="button" value="å››è³‡å·¥å››" name="post AD">
 								</form>
 					</td>
 				</tr>
@@ -124,19 +124,19 @@ input[type="email"] {
 				for (int i = 0; i < temp.size(); i++) {
 					out.println("<tr>");
 					out.print("<td width='20%' align='left'>");
-					out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+					out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 					out.print(temp.get(i).author + "</font></b></td>");
 					
 					out.print("<td width='60%' align='left'>");
-					out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+					out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 					out.print(temp.get(i).content + "</font></b></td>");
 					
 					out.print("<td width='20%' align='left'>");
-					out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+					out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 					out.print(temp.get(i).priority + "</font></b><br>");
 					out.print("<input type='button' value='heart");
 					out.print(temp.get(i).heart+ "' name='Heart'>");
-					out.print("<input type='button' value='comment' name='Comment'></td>");
+					ut.print("<input type='button' value='Comment' name='action' articleID = temp.get(i).id output = temp.get(i).content></td>");
 					out.println("</tr>");
 				}
 			%>
