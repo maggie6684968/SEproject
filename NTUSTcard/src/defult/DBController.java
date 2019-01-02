@@ -125,7 +125,7 @@ public class DBController {
 		}
 		public void setPostData(PostDataBean data) {
 			try {
-				String SQL = "INSERT post " + "(id,author,board,priority,content,postTime,comments";
+				String SQL = "INSERT INTO post " + "(id,author,board,priority,content,postTime,comments";
 				
 				for(int i = 0; i < data.comments;i++) {
 					SQL += "," + "comment" + Integer.toString(i);
