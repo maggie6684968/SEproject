@@ -1,13 +1,15 @@
 <%@ page language="java" contentType="text/html;charset=big5"%>
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.DBController"%>
-<%@ page import="defult.NTUSTmodel"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="java.util.*" %>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <%
-	NTUSTmodel model = new NTUSTmodel();
-	DBController dbc = model.getDBController();
-	ArrayList<UserInfoBean> temp = dbc.getUserData();
+DBController dbc = new DBController();
+ArrayList<UserInfoBean> temp = dbc.getUserData();
+Random rand = new Random();
+int randUser = rand.nextInt(temp.size());
+System.out.println(randUser);
 %>
 <html>
 <head>
@@ -91,11 +93,6 @@ input[type="email"] {
 	<table style="width: 750px;">
 		<b><font size="6" face="微軟正黑體">台科卡</font></b>
 				<tr>
-					<td width="60%" valign="bottom"><br><br>
-							<form method="post" action="main">
-								<input type="submit" value="抽卡" name="doro">
-							</form><br><br>
-					</td>
 					<td width="40%" align="center" rowspan=2>
 						<img src="https://ppt.cc/fLreBx@.png"
 										border="1" alt="PPT.cc縮圖服務" title="PPT.cc縮圖服務"
@@ -103,28 +100,19 @@ input[type="email"] {
 						<br>				
 						<font size="6" face="微軟正黑體">
 						<b><%
- 							UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
- 							String name = user.getName();
- 							out.println(name);
+						UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
+							String name = user.getName();
+							out.println(name);
 						%></b>
 						</font>
-						<br><br><br>				
+						<br><br><br>			
 						<font size="3" face="微軟正黑體">
 						<b>
-							Gender:	male
+							Birthday:	
 						</b>
 						<b><%
- 							
-						%></b>
-						</font>
-						<br><br>				
-						<font size="3" face="微軟正黑體">
-						<b>
-							birthday:	
-						</b>
-						<b><%
- 							String birthday = user.getBirthday();
- 							out.println(birthday);
+ 							String birthday1 = user.getBirthday();
+ 							out.println(birthday1);
 						%></b>
 						</font>
 						<br><br>				
@@ -133,8 +121,8 @@ input[type="email"] {
 							Institute:	
 						</b>
 						<b><%
- 							String institute = user.getInstitute();
- 							out.println(institute);
+ 							String institute1 = user.getInstitute();
+ 							out.println(institute1);
 						%></b>
 						</font>
 						<br><br>				
@@ -143,34 +131,73 @@ input[type="email"] {
 							Depart:	
 						</b>
 						<b><%
- 							String depart = user.getDepart();
- 							out.println(depart);
+ 							String depart1 = user.getDepart();
+ 							out.println(depart1);
 						%></b>
 						</font>
 						<br><br>				
 						<font size="3" face="微軟正黑體">
-						<b>hobby:</b><br>
+						<b>Hobby:</b><br>
 						<b><%
-							String hobby = user.getHobby();
-							out.println(hobby);
+							String hobby1 = user.getHobby();
+							out.println(hobby1);
 						%></b>
 						</font>
-					</td>
-					
+					</td>					
 				</tr>
+				
 				<tr>
-					<td width="60%" align="left">
-						<b><font size="2" face="微軟正黑體">隱藏卡片上的message:</font></b>
-						<br>
-						<input type="checkbox" name="hideInfo" value="gender">
-						<label for="gender">Gender</label><br>
-  						<input type="checkbox" name="hideInfo" value="birthday">
- 						<label for="birthday">Birthday</label><br>
-  						<input type="checkbox" name="hideInfo" value="photo">
-						<label for="photo">Photo</label><br>
-						<input type="checkbox" name="hideInfo" value="hobby">
-						<label for="hobby">Hobby</label><br>
-  					</td>
+					<td width="40%" align="center" rowspan=2>
+						<img src="https://ppt.cc/fLreBx@.png"
+										border="1" alt="PPT.cc縮圖服務" title="PPT.cc縮圖服務"
+										style="width: 73px; height: 71px;">
+						<br>				
+						<font size="6" face="微軟正黑體">
+						<b><%
+ 							UserInfoBean randuser = temp.get(randUser);
+ 							String UserName2 = randuser.getName();
+ 							out.println(UserName2);
+						%></b>
+						</font>
+						<br><br><br>			
+						<font size="3" face="微軟正黑體">
+						<b>
+							Birthday:	
+						</b>
+						<b><%
+ 							String birthday2 = randuser.getBirthday();
+ 							out.println(birthday2);
+						%></b>
+						</font>
+						<br><br>				
+						<font size="3" face="微軟正黑體">
+						<b>
+							Institute:	
+						</b>
+						<b><%
+ 							String institute2 = randuser.getInstitute();
+ 							out.println(institute2);
+						%></b>
+						</font>
+						<br><br>				
+						<font size="3" face="微軟正黑體">
+						<b>
+							Depart:	
+						</b>
+						<b><%
+ 							String depart2 = randuser.getDepart();
+ 							out.println(depart2);
+						%></b>
+						</font>
+						<br><br>				
+						<font size="3" face="微軟正黑體">
+						<b>Hobby:</b><br>
+						<b><%
+							String hobby2 = randuser.getHobby();
+							out.println(hobby2);
+						%></b>
+						</font>
+					</td>					
 				</tr>
 	</table>
 </body>
