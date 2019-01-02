@@ -38,18 +38,18 @@ input[type="text"] {
 				<tr>
 					<td style="height: 346px; width: 333px">
 						<p align="center">
-							<b><font size="5" face="·L³n¥¿¶ÂÅé">¿é¤J·s±K½X¤Î­ì¥»ªº«H½c</font></b>
+							<b><font size="5" face="å¾®è»Ÿæ­£é»‘é«”">è¼¸å…¥æ–°å¯†ç¢¼åŠåŽŸæœ¬çš„ä¿¡ç®±</font></b>
 						</p>
 						<div class="demo">
 							
 							<p align="center">
 								<input type="text" name="email" BGCOLOR="#F5F5F5"
-									HTML_CTL="Text" maxLength="10" size="15" placeholder="email"
+									HTML_CTL="Text" maxLength="30" size="15" placeholder="email"
 									style="width: 175px;">
 							</p>
 							<p align="center">
 								<input type="text" name="new password" BGCOLOR="#F5F5F5"
-									HTML_CTL="Text" maxLength="10" size="15"
+									HTML_CTL="Text" maxLength="20" size="15"
 									placeholder="new password" style="width: 175px;">
 							</p>
 							<p align="center">
