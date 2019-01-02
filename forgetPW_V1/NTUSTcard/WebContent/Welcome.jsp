@@ -37,27 +37,27 @@ input[type="submit"] {
 </head>
 <body bgcolor="#FFFAF2">
 	<table style="width: 750px;">
-					<tr>
-						<td>
-							<form method="post" action="main">
-								<span style="float: left;">
-									<input type="submit" value="Card" name="action">
-									<input type="submit" value="Profile Setting" name="action">
-									<input type="submit" value="Secrecy Setting" name="action">
-								</span>
-							</form>
-						</td>
-						<td>
-							<form method="post" action="main">
-								<span style="float: right;">
-									<input type="submit" value="Home Page" name="action">
-									<input type="submit" value="Board" name="action">
-									<input type="submit" value="Family" name="action">
-									<input type="submit" value="logout" name="action">
-								</span>
-							</form>
-						</td>
-					</tr>
+		<tr>
+			<td>
+				<form method="post" action="main">
+					<span style="float: left;">
+						<input type="submit" value="Card" name="action">
+						<input type="submit" value="Profile Setting" name="action">
+						<input type="submit" value="Secrecy Setting" name="action">
+					</span>
+				</form>
+			</td>
+			<td>
+				<form method="post" action="main">
+					<span style="float: right;">
+						<input type="submit" value="Home Page" name="action">
+						<input type="submit" value="Board" name="action">
+						<input type="submit" value="Family" name="action">
+						<input type="submit" value="logout" name="action">
+					</span>
+				</form>
+			</td>
+		</tr>
 	</table>
 	<table style="width: 1000px;">
 								<tr>
