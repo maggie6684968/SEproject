@@ -15,7 +15,7 @@ import javax.servlet.http.*;
 				@WebInitParam(name = "defultPara", value = "this is defult parameter")
 		})
 public class ServletController extends HttpServlet {
-	protected NTUSTmodle ntustmodel = new NTUSTmodle();
+	protected NTUSTmodle ntustmodel=new NTUSTmodle();
     public void service(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
@@ -130,6 +130,27 @@ public class ServletController extends HttpServlet {
         }
         else if ("UpdatePrivacyData".equals(action)) {
         	ntustmodel.updatePrivacyData(request, response); 
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("post article".equals(action)) {
+        	ntustmodel.postArticle(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("post AD".equals(action)) {
+        	ntustmodel.toAD(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
+        else if ("post the AD".equals(action)) {
+        	ntustmodel.postAD(request, response);  
             String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
             if ((targetURL != null) && (targetURL != "")) {
                 gotoPage(targetURL, request, response);

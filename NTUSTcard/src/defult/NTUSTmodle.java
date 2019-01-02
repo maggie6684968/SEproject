@@ -9,15 +9,19 @@ public class NTUSTmodle {
 	
 	protected String view;
 	//DBController dbc = new MySqlDBController();
-	DBController dbc = new H2DBController();
+	DBController dbc = new DBController();
 	ArrayList<UserInfoBean> userInfos = dbc.getUserData();
 	ArrayList<PostDataBean> postDatas = dbc.getPostData();
 	int userIndex;
 	
+	public DBController getDBController() {
+		return dbc;
+	}
 	public void doAuthenticate(HttpServletRequest request, HttpServletResponse response)
 			throws IOException, ServletException {
-		userInfos = dbc.getUserData();
-		postDatas = dbc.getPostData();
+		ArrayList<UserInfoBean> userInfos = dbc.getUserData();
+		ArrayList<PostDataBean> postDatas = dbc.getPostData();
+		
 		String userName = request.getParameter("username");
 		String password = request.getParameter("password");
 		
@@ -25,7 +29,7 @@ public class NTUSTmodle {
 			if((userInfos.get(i).id).equals(userName)&&(userInfos.get(i).password).equals(password))
 			{
 				HttpSession session = request.getSession();
-				// ­Y¨­¤ÀÅçÃÒµL»~¡A´N«Ø¥ß userInfo ª«¥ó¡A¨Ã«ü©w¤@­Ó attribute »P¤§Ã´µ²
+				// è‹¥èº«åˆ†é©—è­‰ç„¡èª¤ï¼Œå°±å»ºç«‹ userInfo ç‰©ä»¶ï¼Œä¸¦æŒ‡å®šä¸€å€‹ attribute èˆ‡ä¹‹ç¹«çµ
 				UserInfoBean bean = new UserInfoBean();
 				bean.setUserName(userName);
 				bean.setPassword(password);
@@ -35,6 +39,7 @@ public class NTUSTmodle {
 				bean.setInstitute(userInfos.get(i).institute);
 				bean.setMail(userInfos.get(i).mail);
 				bean.setHobby(userInfos.get(i).hobby);
+				bean.setcoin(userInfos.get(i).coin);
 				
 				session.setAttribute("userInfo", bean);
 				view = "/Welcome.jsp";
@@ -44,7 +49,7 @@ public class NTUSTmodle {
 		}
 		view = "/LoginError.jsp";
 	}
-	// Âà©¹µù¥Uµe­±
+	// è½‰å¾€è¨»å†Šç•«é¢
     public void toSignUp(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
     	view = "/SignUp.jsp";
@@ -74,10 +79,14 @@ public class NTUSTmodle {
     	view = "/Card.jsp";      
     }
     
-    // Âà©¹µn¤Jµe­±
+    // è½‰å¾€ç™»å…¥ç•«é¢
     public void backToLogin(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
     	view = "/Login.jsp";
+    }
+    public void toAD(HttpServletRequest request, HttpServletResponse response)
+            throws IOException, ServletException {
+    	view = "/AD.jsp";
     }
     
 	public void doSignUp(HttpServletRequest request, HttpServletResponse response)
@@ -95,7 +104,7 @@ public class NTUSTmodle {
 		
 		session.setAttribute("userInfo", bean);
 		
-		//DBController dbc = new DBController();
+		DBController dbc = new DBController();
 		dbc.setUserData(bean);
 		view = "/Welcome.jsp";
 	}
@@ -114,6 +123,7 @@ public class NTUSTmodle {
 		bean.setName(userInfos.get(userIndex).name);
 		bean.setBirthday(userInfos.get(userIndex).birthday);
 		bean.setMail(userInfos.get(userIndex).mail);
+		bean.setcoin(userInfos.get(userIndex).coin);
 		
 		bean.setDepart(depart);
 		userInfos.get(userIndex).depart = depart;
@@ -124,7 +134,7 @@ public class NTUSTmodle {
 		
 		session.setAttribute("userInfo", bean);
 		
-		//DBController dbc = new DBController();
+		DBController dbc = new DBController();
 		dbc.modifyProfileData(ID,depart,institute,hobby);
 		view = "/Welcome.jsp";
 	}
@@ -140,6 +150,7 @@ public class NTUSTmodle {
 		bean.setBirthday(userInfos.get(userIndex).birthday);
 		bean.setDepart(userInfos.get(userIndex).depart);
 		bean.setHobby(userInfos.get(userIndex).hobby);
+		bean.setcoin(userInfos.get(userIndex).coin);
 		
 		String ID = userInfos.get(userIndex).id;
 		String oldPassword = request.getParameter("oldPassword");
@@ -176,7 +187,7 @@ public class NTUSTmodle {
 			
 			System.out.print(modifyPassword);System.out.print(modifymail);
 			
-			//DBController dbc = new DBController();
+			DBController dbc = new DBController();
 			dbc.modifySecrecyData(ID,newPassword,mail);
 			userInfos.get(userIndex).password=bean.password;
 			userInfos.get(userIndex).mail=bean.mail;
@@ -185,13 +196,55 @@ public class NTUSTmodle {
 			view = "/Welcome.jsp";
 		} else view = "/Secrecy.jsp";
 	}
-	// µn¥X
+	public void postArticle(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		PostDataBean bean = new PostDataBean();
+		bean.setAuthor((userInfos.get(userIndex).name));
+		bean.setContent(request.getParameter("Content"));
+		session.setAttribute("postData", bean);
+		
+		DBController dbc = new DBController();
+		dbc.setPostData(bean);
+		view = "/Welcome.jsp";
+	}
+	public void postAD(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		PostDataBean bean = new PostDataBean();
+		bean.setAuthor((userInfos.get(userIndex).name));
+		bean.setPriority(Integer.valueOf(request.getParameter("level")));
+		bean.setContent(request.getParameter("Content"));
+		session.setAttribute("postData", bean);
+		
+		userInfos.get(userIndex).coin -=10 * Integer.valueOf(request.getParameter("level"));
+		
+		UserInfoBean Bean = new UserInfoBean();
+		Bean.setUserName(userInfos.get(userIndex).id);
+		Bean.setPassword(userInfos.get(userIndex).password);
+		Bean.setMail(userInfos.get(userIndex).mail);
+		Bean.setInstitute(userInfos.get(userIndex).institute);
+		Bean.setName(userInfos.get(userIndex).name);
+		Bean.setBirthday(userInfos.get(userIndex).birthday);
+		Bean.setDepart(userInfos.get(userIndex).depart);
+		Bean.setHobby(userInfos.get(userIndex).hobby);
+		Bean.setcoin(userInfos.get(userIndex).coin);
+		
+		session.setAttribute("userInfo", Bean);
+		DBController dbc = new DBController();
+		dbc.setPostData(bean);
+		dbc.spendCoin(Bean.coin, Bean.id);
+		view = "/Welcome.jsp";
+	}
+	
+	
+	// ç™»å‡º
     public void doLogout(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         HttpSession session = request.getSession();
-        session.removeAttribute("userInfo");   // §â¨­¤ÀÅçÃÒºX¸¹²M±¼
-        session.invalidate(); // ²M°£ session ¤º©Ò¦³ attributes »Pª«¥óªºÃ´µ²Ãö«Y
-        view = "/Login.jsp";           // ¦AÂà©¹µn¤Jµe­±
+        session.removeAttribute("userInfo");   // æŠŠèº«åˆ†é©—è­‰æ——è™Ÿæ¸…æ‰
+        session.invalidate(); // æ¸…é™¤ session å…§æ‰€æœ‰ attributes èˆ‡ç‰©ä»¶çš„ç¹«çµé—œä¿‚
+        view = "/Login.jsp";           // å†è½‰å¾€ç™»å…¥ç•«é¢
     }
     
 	public void setView(String aView) {
