@@ -67,7 +67,7 @@ input[type="password"] {
 							<p align="center">
 								<input type=submit name="action" value="Sign Up">
 								&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-								<input type=submit name="action" value="Forgot">
+								<input type=submit name="action" value="Forget">
 							</p>
 						</div>
 					</td>
@@ -75,6 +75,5 @@ input[type="password"] {
 			</table>
 		</center>
 	</Form>
-	
 </body>
 </html>
