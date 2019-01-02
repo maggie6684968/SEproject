@@ -8,8 +8,8 @@ import java.util.ArrayList;
 public class NTUSTmodle {
 	
 	protected String view;
-	//DBController dbc = new MySqlDBController();
-	DBController dbc = new DBController();
+	//DBController dbc = new H2DBController();
+	DBController dbc = new MySqlDBController();
 	ArrayList<UserInfoBean> userInfos = dbc.getUserData();
 	ArrayList<PostDataBean> postDatas = dbc.getPostData();
 	int userIndex;
