@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html;charset=big5"%>
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.DBController"%>
+<%@ page import="defult.NTUSTmodle"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
-<%	DBController dbc = new DBController();
+<%	
+	NTUSTmodle model = new NTUSTmodle();
+	DBController dbc = model.getDBController();
 	ArrayList<UserInfoBean> temp = dbc.getUserData();
 %>
 <html>
@@ -148,9 +151,9 @@ input[type="email"] {
 						<font size="3" face="·L³n¥¿¶ÂÅé">
 						<b>hobby:</b><br>
 						<b><%
- 							
+							String hobby = user.getHobby();
+							out.println(hobby);
 						%></b>
-						<b>2 3 5 7 11 13 17</b>
 						</font>
 					</td>
 					

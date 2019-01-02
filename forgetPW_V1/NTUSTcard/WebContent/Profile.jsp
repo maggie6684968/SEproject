@@ -1,9 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=BIG5" pageEncoding="BIG5"%>
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.DBController"%>
+<%@ page import="defult.NTUSTmodle"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
-<%	DBController dbc = new DBController();
+<%	
+	NTUSTmodle model = new NTUSTmodle();
+	DBController dbc = model.getDBController();
 	ArrayList<UserInfoBean> temp = dbc.getUserData();
 %>
 
@@ -69,6 +72,8 @@ input[type="text"] {
 				
 	<table style="border: 2px #7878FF solid; width: 900px"
 					cellpadding="10" border='0' BGCOLOR=#FFFAF2>
+			<form method="post" action="main">
+						
 				<tr>
 					<td width="30%" align="left">				
 						<b><font size="2" face="微軟正黑體">Your name:	</font></b>
@@ -81,7 +86,8 @@ input[type="text"] {
 					<td width="40%" align="left" rowspan=4>
 						<b><font size="2" face="微軟正黑體">Your interest or hobby:	</font></b>
 						<br>
-						<textarea name="Content" style="width:250px;height:300px;" width="50%" height="50%">hobby</textarea>	
+						<textarea name="hobby" style="width:250px;height:300px;" width="50%" height="50%"><%out.println(user.getHobby());%></textarea>	
+						
 					</td>
 					<td width="30%" align="left" rowspan=2>
 						<img src="http://localhost:8080/DBTest/src/haibao.jpg"/>		
@@ -108,26 +114,24 @@ input[type="text"] {
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
-						<form method="post" action="main">
 							<b><font size="2" face="微軟正黑體">Institute:		</font></b>
 							<select name="institute">
 　							<option value="CSIE" selected>電資學院</option>
 							<option value="ECO">財經學院</option>
 							</select>
-						</form>
+						
 					</td>		
 				</tr>
 				<tr>
 					<td width="30%" align="left">				
-						<form method="post" action="main">
 						<b><font size="2" face="微軟正黑體">Department:		</font></b>
-							<select name="department">
+							<select name="depart">
 　							<option value="CSIE" selected>資訊工程系</option>
 							<option value="ECE">電子工程系</option>
 							<option value="EE">電機工程系</option>
 							<option value="ECO">經濟系</option>
 							</select>
-						</form>
+						
 					</td>		
 				</tr>
 				<tr>
@@ -141,13 +145,13 @@ input[type="text"] {
 							</select>
 					</td>		
 					<td width="40%" align="center" colspan=2>
-						<form method="post" action="main">
 						<input type=submit value="Cancel" name="action">
 						&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 						<input type=submit value="UpdateProfile" name="action">
-						</form>
+						
 					</td>
 				</tr>
 			</table>
+		</form>
 </body>
 </html>

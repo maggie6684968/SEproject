@@ -1,10 +1,15 @@
-<%@ page language="java" contentType="text/html;charset=big5"%>
+ï»¿<%@ page language="java" contentType="text/html;charset=big5"%>
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.DBController"%>
 <%@ page import="java.util.ArrayList"%>
+<%@ page import="defult.NTUSTmodle"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
-<%	DBController dbc = new DBController();
+<jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
+
+<%	NTUSTmodle model = new NTUSTmodle();
+	DBController dbc = model.getDBController();
 	ArrayList<UserInfoBean> temp = dbc.getUserData();
+	UserInfoBean user = (UserInfoBean) session.getAttribute("userInfo");
 %>
 <html>
 <head>
@@ -86,15 +91,16 @@ input[type="email"] {
 					</tr>
 				</table>
 	<table style="width: 750px;">
-		<b><font size="6" face="·L³n¥¿¶ÂÅé">AD setting</font></b>
+		<b><font size="6" face="å¾®è»Ÿæ­£é»‘é«”">AD setting</font></b>
+			<form method="post" action="main">
 				<tr>
 					<td width="30%" align="center">				
-						<b><font size="2" face="·L³n¥¿¶ÂÅé">¥x¬ì¹ô:	</font></b>
-						100
+						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">å°ç§‘å¹£:	</font></b>
+						<% out.println(user.getcoin());%>
 					</td>
 					<td width="70%" align="center" valign="top" rowspan=3>
 						<textarea name="Content"  style="width:500px;height:400px;"
-							placeholder="§A·Q­n«Å¶Ç¨Ç¬Æ»ò©O?"></textarea>
+							placeholder="ä½ æƒ³è¦å®£å‚³äº›ç”šéº¼å‘¢?"><%%></textarea>
 						<br><br><br>
 						<input type="file" name="photo">
 						<br><br><br>
@@ -103,24 +109,25 @@ input[type="email"] {
 				</tr>
 				<tr>
 					<td width="30%" align="center">				
-						<b><font size="2" face="·L³n¥¿¶ÂÅé">ADªºÅv­­:		</font></b>
-						<select id="level" name="Level" onchange="VALUE(this.id)">
-¡@								<option value="1" selected>class 1</option>
-								<option value="2">class 2</option>
-								<option value="3">class 3</option>
+						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”">ADçš„æ¬Šé™:		</font></b>
+						<select id="level" name="level" onchange="VALUE(this.id)">
+ã€€								<option value=1 selected>class 1</option>
+								<option value=2>class 2</option>
+								<option value=3>class 3</option>
 						</select>
 					</td>		
 				</tr>
+			</form>
 				<tr>
 					<td width="30%" align="center">				
-						<b><font size="2" face="·L³n¥¿¶ÂÅé" id="money">ADªº»ù®æ:		10</font></b>
+						<b><font size="2" face="å¾®è»Ÿæ­£é»‘é«”" id="money">ADçš„åƒ¹æ ¼:		10</font></b>
 						<script type="text/javascript">
 							function VALUE(x)
 							{
 								var myselect = document.getElementById("level");
 								var index = myselect.selectedIndex;
 								money=(myselect.options[index].value)*10;
-								document.getElementById("money").innerHTML = "ADªº»ù®æ:		"+money;
+								document.getElementById("money").innerHTML = "ADçš„åƒ¹æ ¼:		"+money;
 							}
 						</script>
 					</td>		

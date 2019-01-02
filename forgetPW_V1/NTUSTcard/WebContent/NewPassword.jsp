@@ -44,12 +44,12 @@ input[type="text"] {
 							<p align="center">
 								<input type="text" name="new password" BGCOLOR="#F5F5F5"
 									HTML_CTL="Text" maxLength="10" size="15"
-									placeholder="email" style="width: 175px;">
+									placeholder="new password" style="width: 175px;">
 							</p>
 							<p align="center">
 								<input type="text" name="email" BGCOLOR="#F5F5F5"
-									HTML_CTL="Text" maxLength="10" size="15"
-									placeholder="new password"	style="width: 175px;">
+									HTML_CTL="Text" maxLength="10" size="15" placeholder="email"
+									style="width: 175px;">
 							</p>
 							<p align="center">
 								<!-- <input type=submit value="login"> -->

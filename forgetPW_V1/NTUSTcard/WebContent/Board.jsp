@@ -2,11 +2,13 @@
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.PostDataBean"%>
 <%@ page import="defult.DBController"%>
+<%@ page import="defult.NTUSTmodle"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
 <%	
-	DBController dbc = new DBController();
+	NTUSTmodle model = new NTUSTmodle();
+	DBController dbc = model.getDBController();
 	ArrayList<PostDataBean> temp = dbc.getPostData();
 %>
 <html>
@@ -90,27 +92,30 @@ input[type="email"] {
 	</table>
 	<table style="width: 750px;">
 		<b><font size="6" face="微軟正黑體">布告欄</font></b>
-				<tr>
+				<form method="post" action="main">
+					<tr>
 					<td width="40%" valign="bottom">
-							<form method="post" action="main">
-								<span style="float: right;">
-								<input type="button" value="發布文章" name="post article">
-								<input type="button" value="發布廣告" name="post AD">
-								</span>
-							</form>
+							<span style="float: right;">
+								<input type="submit" value="post article" name="action">
+								<input type="submit" value="post AD" name="action">
+							</span>
+							
 					</td>
 					<td width="60%" align="left" >
-						<textarea name="Content"  style="width:400px;height:100px;"
+						<textarea name="Content" style="width:400px;height:100px;"
 							placeholder="發布動態"></textarea>
 					</td>
-				</tr>
+					</tr>
+				</form>
 				<tr>
 					<td valign="bottom" colspan=2>
 							<form method="post" action="main">
 								<input type="button" value="所有班級看板" name="post article">
+								<input type="button" value="四資工一" name="post AD">
+								<input type="button" value="四資工二" name="post AD">
 								<input type="button" value="四資工三" name="post AD">
-								<input type="button" value="將資料庫的看板名稱填進來" name="post AD">
-							</form>
+								<input type="button" value="四資工四" name="post AD">
+								</form>
 					</td>
 				</tr>
 		</table>
@@ -131,7 +136,7 @@ input[type="email"] {
 					out.print(temp.get(i).priority + "</font></b><br>");
 					out.print("<input type='button' value='heart");
 					out.print(temp.get(i).heart+ "' name='Heart'>");
-					out.print("<input type='button' value='comment' name='Comment'></td>");
+					out.print("<input type='button' value='Comment' name='action' articleID = temp.get(i).id output = temp.get(i).content></td>");
 					out.println("</tr>");
 				}
 			%>

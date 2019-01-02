@@ -2,18 +2,19 @@
 <%@ page import="defult.UserInfoBean"%>
 <%@ page import="defult.PostDataBean"%>
 <%@ page import="defult.DBController"%>
-<%@ page import="defult.NTUSTmodle"%>
 <%@ page import="java.util.ArrayList"%>
 <jsp:useBean id="userInfo" class="defult.UserInfoBean" scope="session" />
 <jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
 <%	
-	NTUSTmodle model = new NTUSTmodle();
-	DBController dbc = model.getDBController();
+	DBController dbc = new DBController();
+	int id = Integer.parseInt(request.getParameter("articleID"));
+	String output = request.getParameter("output");
+	ArrayList<String> tmp = dbc.getCommentData(id);
 	ArrayList<PostDataBean> temp = dbc.getPostData();
 %>
 <html>
 <head>
-<title>family</title>
+<title>board</title>
 <style>
 input[type="button"] {
 	border: 1px #7878FF solid;
@@ -89,28 +90,19 @@ input[type="email"] {
 							</form>
 						</td>
 					</tr>
-				</table>
+	</table>
 	<table style="width: 750px;">
-		<b><font size="6" face="微軟正黑體">我的家族</font></b>
-			<form method="post" action="main">
-				<tr>
-					<td width="40%" valign="bottom">
-								<span style="float: right;">
-								<input type="submit" value="post article" name="action">
-								</span>
-					</td>
-					<td width="60%" align="left" >
-						<textarea name="Content"  style="width:400px;height:100px;"
-							placeholder="發布動態"></textarea>
+		<b><font size="5" face="微軟正黑體">內容</font></b>
+				<tr>					
+					<td width="100%" align="middle" bgcolor="#eeeeee" >
+					<b><font size='2' face='微軟正黑體'><%=output%></font></b>
+						
 					</td>
 				</tr>
-			</form>
 				<tr>
 					<td valign="bottom" colspan=2>
 							<form method="post" action="main">
-								<input type="button" value="軟骨小蛆" name="post article">
-								<input type="button" value="pokemon" name="post AD">
-								<input type="button" value="我想吃披薩" name="post AD">
+								<input type="button" value="回到看板" name="post article">
 							</form>
 					</td>
 				</tr>
@@ -121,22 +113,14 @@ input[type="email"] {
 					out.println("<tr>");
 					out.print("<td width='20%' align='left'>");
 					out.print("<b><font size='2' face='微軟正黑體'>");
-					out.print(temp.get(i).author + "</font></b></td>");
+					out.print(i + "</font></b></td>");
 					
-					out.print("<td width='60%' align='left'>");
+					out.print("<td width='80%' align='left'>");
 					out.print("<b><font size='2' face='微軟正黑體'>");
-					out.print(temp.get(i).content + "</font></b></td>");
-					
-					out.print("<td width='20%' align='left'>");
-					out.print("<b><font size='2' face='微軟正黑體'>");
-					out.print(temp.get(i).priority + "</font></b><br>");
-					out.print("<input type='button' value='heart");
-					out.print(temp.get(i).heart+ "' name='Heart'>");
-					out.print("<input type='button' value='comment' name='Comment'></td>");
-					out.println("</tr>");
+					out.print(temp.get(i) + "</font></b></td>");				
+
 				}
 			%>
 		</table>
-		
 </body>
 </html>
