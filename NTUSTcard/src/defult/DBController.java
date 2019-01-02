@@ -10,9 +10,9 @@ public class DBController {
 
 	public DBController() {
 		try {
-			// Class ªºÀRºA forName() ¤èªk¹ê²{°ÊºA¥[¸üÃş§O
+			// Class çš„éœæ…‹ forName() æ–¹æ³•å¯¦ç¾å‹•æ…‹åŠ è¼‰é¡åˆ¥
 			Class.forName("com.mysql.jdbc.Driver");
-			// 3306|MySQL¶}©ñ¦¹ºİ¤f
+			// 3306|MySQLé–‹æ”¾æ­¤ç«¯å£
 			con = DriverManager.getConnection("jdbc:mysql://localhost:3306/ntustsql?serverTimezone=UTC", "root", "1234");
 			st = con.createStatement();
 
@@ -157,13 +157,11 @@ public class DBController {
 		public ArrayList<String> getCommentData(int PostID) {
 			ArrayList<String> result = new ArrayList<String>();
 			try {
-				String query = "select comments from post WHERE id = PostID";
+				String query = "SELECT * FROM comment WHERE id = PostID";
 				rs = st.executeQuery(query);
 				System.out.println("Records for Database");
-				int comments = rs.getInt("comments");
-				for(int i=0; i < comments;i++)
-				{
-					result.add(rs.getString("comment" +Integer.toString(i)));
+				while (rs.next()) {
+					result.add(rs.getString("content"));
 				}
 			} catch (Exception ex) {
 				System.out.println(ex);
@@ -172,31 +170,10 @@ public class DBController {
 		}
 		public void setCommentData(int PostID, String content) {
 			try {
-				String query = "select * from post WHERE id = PostID";
-				String idUpdate = "Update user Set id= -1 Where id = PostID";
-				st.execute(idUpdate);
-				String delete = "Delete From post Where id = -1";
-				rs = st.executeQuery(query);				
-				int comments = rs.getInt("comments") + 1;
-
-				String SQL = "INSERT INTO post " + "(id,author,board,priority,content,postTime,comments";
-				
-				for(int i = 0; i < rs.getInt("comments");i++) {
-					SQL += "," + "comment" + Integer.toString(i);
-				}
-				
-				SQL += ") VALUES ('" + PostID + "','" + rs.getString("author") + "','" + rs.getString("board") + "','" + rs.getInt("priority")
-						 + "','" + rs.getString("content") + "','" + rs.getString("postTime") + "','" + comments; 
-         		
-         		for(int i = 0; i < rs.getInt("comments");i++) {
-        			SQL += "','" + rs.getString("comment" +Integer.toString(i));
-        		}
-				
-         		SQL += "','" + content;
-         		
-         		SQL += "')";
+				String SQL = "INSERT INTO comment (postID, content";
+				SQL += ") VALUES ('" + PostID + "','" + content;			
+        		SQL += "')";
          		st.execute(SQL);
-         		st.execute(delete);
 				
 			} catch (Exception ex) {
 				System.out.println(ex);
