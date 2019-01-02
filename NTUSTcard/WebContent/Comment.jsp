@@ -7,9 +7,15 @@
 <jsp:useBean id="postData" class="defult.PostDataBean" scope="session" />
 <%	
 	DBController dbc = new DBController();
-	int id = Integer.parseInt(request.getParameter("articleID"));
+	int postID;
+	String str = request.getParameter("articleID");
+	try{
+   			postID= Integer.valueOf(str).intValue();
+		}catch(NumberFormatException e){
+   			postID = 0;
+	}
 	String output = request.getParameter("output");
-	ArrayList<String> tmp = dbc.getCommentData(id);
+	ArrayList<String> tmp = dbc.getCommentData(postID);
 	ArrayList<PostDataBean> temp = dbc.getPostData();
 %>
 <html>
@@ -92,23 +98,36 @@ input[type="email"] {
 					</tr>
 	</table>
 	<table style="width: 750px;">
-		<b><font size="5" face="微軟正黑體">內容</font></b>
-				<tr>					
+		<b><font size="6" face="微軟正黑體">文章內容</font></b>
+				<tr>
 					<td width="100%" align="middle" bgcolor="#eeeeee" >
 					<b><font size='2' face='微軟正黑體'><%=output%></font></b>
-						
 					</td>
 				</tr>
+				<form method="post" action="main">
+					<tr>
+					
+					<td width="60%" align="left" >
+						<textarea name="Content" id=id style="width:600px;height:100px;"
+							placeholder="發布留言"></textarea>
+					</td>
+					<td width="40%" valign="bottom">
+							<span style="float: right;">
+								<input type="submit" value="確認留言" name="action">
+							</span>							
+					</td>
+					</tr>
+				</form>
 				<tr>
-					<td valign="bottom" colspan=2>
+					<td valign="bottom">
 							<form method="post" action="main">
-								<input type="button" value="回到看板" name="post article">
+								<input type="submit" value="回到看板" name="action">
 							</form>
 					</td>
 				</tr>
 		</table>
 		<table style="width: 750px;">
-			<%				
+<%				
 				for (int i = 0; i < temp.size(); i++) {
 					out.println("<tr>");
 					out.print("<td width='20%' align='left'>");
