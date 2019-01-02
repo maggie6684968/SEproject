@@ -37,35 +37,35 @@ input[type="submit"] {
 </head>
 <body bgcolor="#FFFAF2">
 	<table style="width: 750px;">
-		<tr>
-			<td>
-				<form method="post" action="main">
-					<span style="float: left;">
-						<input type="submit" value="Card" name="action">
-						<input type="submit" value="Profile Setting" name="action">
-						<input type="submit" value="Secrecy Setting" name="action">
-					</span>
-				</form>
-			</td>
-			<td>
-				<form method="post" action="main">
-					<span style="float: right;">
-						<input type="submit" value="Home Page" name="action">
-						<input type="submit" value="Board" name="action">
-						<input type="submit" value="Family" name="action">
-						<input type="submit" value="logout" name="action">
-					</span>
-				</form>
-			</td>
-		</tr>
+					<tr>
+						<td>
+							<form method="post" action="main">
+								<span style="float: left;">
+									<input type="submit" value="Card" name="action">
+									<input type="submit" value="Profile Setting" name="action">
+									<input type="submit" value="Secrecy Setting" name="action">
+								</span>
+							</form>
+						</td>
+						<td>
+							<form method="post" action="main">
+								<span style="float: right;">
+									<input type="submit" value="Home Page" name="action">
+									<input type="submit" value="Board" name="action">
+									<input type="submit" value="Family" name="action">
+									<input type="submit" value="logout" name="action">
+								</span>
+							</form>
+						</td>
+					</tr>
 	</table>
 	<table style="width: 1000px;">
 								<tr>
 									<td valign="middle" width="20%"style="border: 2px #7878FF solid;">
 										<!-- <img src="https://ppt.cc/fLreBx@.png"
-											border="1" alt="PPT.ccÁY¹ÏªA°È" title="PPT.ccÁY¹ÏªA°È"
+											border="1" alt="PPT.ccç¸®åœ–æœå‹™" title="PPT.ccç¸®åœ–æœå‹™"
 											style="width: 73px; height: 71px;"> -->
-										<font size="4" face="·L³n¥¿¶ÂÅé"><b>
+										<font size="4" face="å¾®è»Ÿæ­£é»‘é«”"><b>
 										<%
 										 	out.println(name);
 										%>
@@ -75,15 +75,15 @@ input[type="submit"] {
 										if(post > post_count)
 										{
 											out.print("<td width='10%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).author + "</font></b></td>");
 					
 											out.print("<td width='50%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).content + "</font></b></td>");
 					
 											out.print("<td width='20%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).priority + "</font></b><br>");
 											out.print("<input type='button' value='heart");
 											out.print(tmp.get(post_count).heart+ "' name='Heart'>");
@@ -94,31 +94,31 @@ input[type="submit"] {
 								</tr>
 								<tr>
 									<td valign="middle" width="20%" rowspan=2 style="border: 2px #7878FF solid;">	
-										<font size="4" face="·L³n¥¿¶ÂÅé"><b>
+										<font size="4" face="å¾®è»Ÿæ­£é»‘é«”"><b>
 										<%
 											String birthday = user.getBirthday();
 											String mail = user.getMail();
 											String institute = user.getInstitute();
 											String depart = user.getDepart();
-											out.println("¥Í¤é : " + birthday + "<br>");
-											out.println("«H½c : " + mail + "<br>");
-											out.println("¾Ç°| : " + institute + "<br>");
-											out.println("¨t¯Å : " + depart + "<br>");
+											out.println("ç”Ÿæ—¥ : " + birthday + "<br>");
+											out.println("ä¿¡ç®± : " + mail + "<br>");
+											out.println("å­¸é™¢ : " + institute + "<br>");
+											out.println("ç³»ç´š : " + depart + "<br>");
 										%>
 										</b></font>
 									</td>
 									<% 	if(post_count < post){
 										
 											out.print("<td width='10%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).author + "</font></b></td>");
 					
 											out.print("<td width='50%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).content + "</font></b></td>");
 					
 											out.print("<td width='20%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).priority + "</font></b><br>");
 											out.print("<input type='button' value='heart");
 											out.print(tmp.get(post_count).heart+ "' name='Heart'>");
@@ -131,15 +131,15 @@ input[type="submit"] {
 										<%	if(post_count < post){
 											
 											out.print("<td width='10%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).author + "</font></b></td>");
 					
 											out.print("<td width='50%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).content + "</font></b></td>");
 					
 											out.print("<td width='20%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
+											out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
 											out.print(tmp.get(post_count).priority + "</font></b><br>");
 											out.print("<input type='button' value='heart");
 											out.print(tmp.get(post_count).heart+ "' name='Heart'>");
@@ -149,27 +149,27 @@ input[type="submit"] {
 									%>
 								</tr>
 								<%	
-										for(;post_count < post;post_count++){
-											out.print("<tr>");
-											out.print("<td valign='middle' width='20%'>");
-											out.print("</td>");
-											
-											out.print("<td width='10%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
-											out.print(tmp.get(post_count).author + "</font></b></td>");
-					
-											out.print("<td width='50%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
-											out.print(tmp.get(post_count).content + "</font></b></td>");
-					
-											out.print("<td width='20%' align='left'>");
-											out.print("<b><font size='2' face='·L³n¥¿¶ÂÅé'>");
-											out.print(tmp.get(post_count).priority + "</font></b><br>");
-											out.print("<input type='button' value='heart");
-											out.print(tmp.get(post_count).heart+ "' name='Heart'>");
-											out.print("<input type='button' value='comment' name='Comment'></td>");
-											out.print("</tr>");
-										}
+									for(;post_count < post;post_count++){
+										out.print("<tr>");
+										out.print("<td valign='middle' width='20%'>");
+										out.print("</td>");
+
+										out.print("<td width='10%' align='left'>");
+										out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
+										out.print(tmp.get(post_count).author + "</font></b></td>");
+
+										out.print("<td width='50%' align='left'>");
+										out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
+										out.print(tmp.get(post_count).content + "</font></b></td>");
+
+										out.print("<td width='20%' align='left'>");
+										out.print("<b><font size='2' face='å¾®è»Ÿæ­£é»‘é«”'>");
+										out.print(tmp.get(post_count).priority + "</font></b><br>");
+										out.print("<input type='button' value='heart");
+										out.print(tmp.get(post_count).heart+ "' name='Heart'>");
+										out.print("<input type='button' value='comment' name='Comment'></td>");
+										out.print("</tr>");
+									}
 									post_count = 0;
 									
 								
