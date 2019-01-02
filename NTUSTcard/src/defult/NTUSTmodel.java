@@ -32,7 +32,7 @@ public class NTUSTmodel {
 			if((userInfos.get(i).id).equals(userName)&&(userInfos.get(i).password).equals(password))
 			{
 				HttpSession session = request.getSession();
-				// ­Y¨­¤ÀÅçÃÒµL»~¡A´N«Ø¥ß userInfo ª«¥ó¡A¨Ã«ü©w¤@­Ó attribute »P¤§Ã´µ²
+				// è‹¥èº«åˆ†é©—è­‰ç„¡èª¤ï¼Œå°±å»ºç«‹ userInfo ç‰©ä»¶ï¼Œä¸¦æŒ‡å®šä¸€å€‹ attribute èˆ‡ä¹‹ç¹«çµ
 				UserInfoBean bean = new UserInfoBean();
 				bean.setUserName(userName);
 				bean.setPassword(password);
@@ -52,7 +52,7 @@ public class NTUSTmodel {
 		}
 		view = "/LoginError.jsp";
 	}
-	// Âà©¹µù¥Uµe­±
+	// è½‰å¾€è¨»å†Šç•«é¢
     public void toSignUp(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
     	view = "/SignUp.jsp";
@@ -86,13 +86,30 @@ public class NTUSTmodel {
     	view = "/Comment.jsp";      
     } 
     
-    //«Ø¥ß·s±K½Xªº­¶­±
+    //å»ºç«‹æ–°å¯†ç¢¼çš„é é¢
     public void creatNewPW(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
     	
     	view = "/NewPassword.jsp";
     }
-    // Âà©¹µn¤Jµe­±
+    //é‡è¨­å¯†ç¢¼
+    public void resetPassword(HttpServletRequest request, HttpServletResponse response)
+    		throws IOException, ServletException {
+    	String id = request.getParameter("id");
+    	String mail = request.getParameter("email");
+    	String newPW = request.getParameter("new password");
+    	for (int i=0;i<userInfos.size();i++) {
+    		if(id.equals(userInfos.get(i).id) && mail.equals(userInfos.get(i).mail)) {
+    			dbc.modifySecrecyData(id, newPW, mail);
+    	    	view = "/Login.jsp";
+    			return;
+    		}
+    		//id not found
+    		
+    	}
+    	view = "/ResetPasswordError.jsp";
+    }
+    // è½‰å¾€ç™»å…¥ç•«é¢
     public void backToLogin(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
     	view = "/Login.jsp";
@@ -267,13 +284,13 @@ public class NTUSTmodel {
 		dbc.setCommentData(postID,content);
 		view = "/Comment.jsp";
 	}
-	// µn¥X
+	// ç™»å‡º
     public void doLogout(HttpServletRequest request, HttpServletResponse response)
             throws IOException, ServletException {
         HttpSession session = request.getSession();
-        session.removeAttribute("userInfo");   // §â¨­¤ÀÅçÃÒºX¸¹²M±¼
-        session.invalidate(); // ²M°£ session ¤º©Ò¦³ attributes »Pª«¥óªºÃ´µ²Ãö«Y
-        view = "/Login.jsp";           // ¦AÂà©¹µn¤Jµe­±
+        session.removeAttribute("userInfo");   // æŠŠèº«åˆ†é©—è­‰æ——è™Ÿæ¸…æ‰
+        session.invalidate(); // æ¸…é™¤ session å…§æ‰€æœ‰ attributes èˆ‡ç‰©ä»¶çš„ç¹«çµé—œä¿‚
+        view = "/Login.jsp";           // å†è½‰å¾€ç™»å…¥ç•«é¢
     }
     
 	public void setView(String aView) {
