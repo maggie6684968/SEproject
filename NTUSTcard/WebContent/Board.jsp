@@ -136,7 +136,7 @@ input[type="email"] {
 					out.print(temp.get(i).priority + "</font></b><br>");
 					out.print("<input type='button' value='heart");
 					out.print(temp.get(i).heart+ "' name='Heart'>");
-					out.print("<input type='button' value='Comment' name='action' articleID = temp.get(i).id output = temp.get(i).content></td>");
+					out.print("<input type='submit' value='Comment' name='action' articleID = temp.get(i).id output = temp.get(i).content></td>");
 					out.println("</tr>");
 				}
 			%>
