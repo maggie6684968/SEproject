@@ -23,7 +23,7 @@ input[type="submit"] {
 				<tr>
 					<td style="height: 346px; width: 333px">
 						<p align="center">
-							<b><font size="5" face="·L³n¥¿¶ÂÅé">±K½X¿ù»~¡I</font></b>
+							<b><font size="5" face="å¾®è»Ÿæ­£é»‘é«”">å¯†ç¢¼éŒ¯èª¤</font></b>
 						</p>
 							<p align="center">
 								<input type=submit name="action" value="Back">
