@@ -86,6 +86,13 @@ public class ServletController extends HttpServlet {
                 gotoPage(targetURL, request, response);
             }
         }
+	 else if ("回到看板".equals(action)) {
+        	ntustmodel.toBoard(request, response);  
+            String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+            if ((targetURL != null) && (targetURL != "")) {
+                gotoPage(targetURL, request, response);
+            }
+        }
         else if ("Home Page".equals(action)) {
         	ntustmodel.toHome(request, response);  
             String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
@@ -163,6 +170,13 @@ public class ServletController extends HttpServlet {
                 gotoPage(targetURL, request, response);
             }
         }
+	 else if ("確認留言".equals(action)) {
+    		ntustmodel.postComment(request, response);  
+       		String targetURL = ntustmodel.getView();// 取得欲轉送的頁面 (view)
+        	if ((targetURL != null) && (targetURL != "")) {
+            gotoPage(targetURL, request, response);
+        	}
+   	 }
         else {
             response.sendError(HttpServletResponse.SC_NOT_IMPLEMENTED);
         }
