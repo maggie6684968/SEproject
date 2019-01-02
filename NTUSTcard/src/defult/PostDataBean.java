@@ -26,7 +26,7 @@ public class PostDataBean {
 		String strDate = sdFormat.format(date);
 		postTime = strDate;
 		
-		postTime = "";
+		postTime = strDate;
 		heart = 0;
 		comments = 0;
 		comment = new ArrayList<String>();
