@@ -53,7 +53,7 @@ public class ServletController extends HttpServlet {
                 gotoPage(targetURL, request, response);
             }
         }
-        else if ("Forgot".equals(action)) {//NewPassword page
+        else if ("Forget".equals(action)) {//NewPassword page
         	ntustmodel.creatNewPW(request, response);
         	String targetURL = ntustmodel.getView();
             if ((targetURL != null) && (targetURL != "")) {

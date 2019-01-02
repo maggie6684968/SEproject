@@ -6,7 +6,7 @@
 <body>
 <style>
 input[type="submit"] {
-	border: 2px black solid;
+	border: 2px black solid;mj 
 	cursor: pointer;
 	-webkit-border-radius: 5px;
 	border-radius: 5px;

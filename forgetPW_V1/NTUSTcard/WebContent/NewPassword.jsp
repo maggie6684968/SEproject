@@ -21,15 +21,6 @@ input[type="text"] {
 	border-radius: 5px;
 	font-family: Microsoft JhengHei;
 }
-
-input[type="password"] {
-	padding: 5px 15px;
-	border: 2px black solid;
-	-webkit-border-radius: 5px;
-	border-radius: 5px;
-	font-family: Microsoft JhengHei;
-}
-
 .demo {
 	padding-top: 50px;
 	text-align: center
@@ -51,12 +42,12 @@ input[type="password"] {
 						</p>
 						<div class="demo">
 							<p align="center">
-								<input type="text" name="username" BGCOLOR="#F5F5F5"
+								<input type="text" name="new password" BGCOLOR="#F5F5F5"
 									HTML_CTL="Text" maxLength="10" size="15"
-									placeholder="old password" style="width: 175px;">
+									placeholder="new password" style="width: 175px;">
 							</p>
 							<p align="center">
-								<input type="password" name="password" BGCOLOR="#F5F5F5"
+								<input type="text" name="email" BGCOLOR="#F5F5F5"
 									HTML_CTL="Text" maxLength="10" size="15" placeholder="email"
 									style="width: 175px;">
 							</p>
