@@ -47,7 +47,7 @@ input[type="password"] {
 				<tr>
 					<td style="height: 346px; width: 333px">
 						<p align="center">
-							<b><font size="6" face="·L³n¥¿¶ÂÅé">SIGN IN</font></b>
+							<b><font size="6" face="å¾®è»Ÿæ­£é»‘é«”">SIGN IN</font></b>
 						</p>
 						<div class="demo">
 							<p align="center">
