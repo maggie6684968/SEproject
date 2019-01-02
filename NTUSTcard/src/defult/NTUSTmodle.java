@@ -240,6 +240,23 @@ public class NTUSTmodle {
 		dbc.spendCoin(Bean.coin, Bean.id);
 		view = "/Welcome.jsp";
 	}
+	public void postComment(HttpServletRequest request, HttpServletResponse response)
+			throws IOException, ServletException {
+		HttpSession session = request.getSession();
+		
+		int postID;
+		String str = request.getParameter("id");
+		try{
+	   			postID = Integer.valueOf(str).intValue();
+			}catch(NumberFormatException e){
+	  		postID = 0;
+		}
+		String content = request.getParameter("Content");
+		session.setAttribute("postData", content);
+		DBController dbc = new DBController();
+		dbc.setCommentData(postID,content);
+		view = "/Comment.jsp";
+	}
 	
 	
 	// 登出
